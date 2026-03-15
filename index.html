@@ -2,14 +2,14 @@
 <html lang="es">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Unai Lopez | Fotografía deportiva</title>
 
-<style>
+<!-- lightGallery CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.8.0/css/lightgallery-bundle.min.css">
 
+<style>
 body{
 font-family:Arial;
 margin:0;
@@ -48,9 +48,10 @@ margin-top:30px;
 
 .collage img{
 width:100%;
-height:auto;   /* mantiene proporción original */
+height:auto;
 border-radius:6px;
 transition:0.25s;
+cursor:pointer;
 }
 
 .collage img:hover{
@@ -58,18 +59,9 @@ transform:scale(1.03);
 }
 
 /* tamaños distintos */
-
-.big{
-grid-column: span 2;
-}
-
-.wide{
-grid-column: span 2;
-}
-
-.tall{
-grid-row: span 2;
-}
+.big{ grid-column: span 2; }
+.wide{ grid-column: span 2; }
+.tall{ grid-row: span 2; }
 
 footer{
 text-align:center;
@@ -82,9 +74,7 @@ margin:0 10px;
 text-decoration:none;
 color:#222;
 }
-
 </style>
-
 </head>
 
 <body>
@@ -103,27 +93,28 @@ Aquí encontrarás una selección de imágenes de diferentes partidos.
 
 <section>
 
-<div class="collage">
+<!-- LIGHTGALLERY -->
+<div id="lightgallery" class="collage">
 
-<img src="fotos_main/DSC_0951.JPG" class="big">
-<img src="fotos_main/DSC_2506.jpg">
-<img src="fotos_main/DSC_4099.jpg">
-<img src="fotos_main/DSC_4139.jpg">
-<img src="fotos_main/DSC_4267.jpg">
+<a href="fotos_main/DSC_0951.JPG"><img src="fotos_main/DSC_0951.JPG" class="big" alt=""></a>
+<a href="fotos_main/DSC_2506.jpg"><img src="fotos_main/DSC_2506.jpg" alt=""></a>
+<a href="fotos_main/DSC_4099.jpg"><img src="fotos_main/DSC_4099.jpg" alt=""></a>
+<a href="fotos_main/DSC_4139.jpg"><img src="fotos_main/DSC_4139.jpg" class="tall" alt=""></a>
+<a href="fotos_main/DSC_4267.jpg"><img src="fotos_main/DSC_4267.jpg" alt=""></a>
 
-<img src="fotos_main/DSC_4299.jpg">
-<img src="fotos_main/DSC_4335.jpg" class="wide">
-<img src="fotos_main/DSC_4700.jpg">
-<img src="fotos_main/DSC_4842.jpg">
-<img src="fotos_main/DSC_4848.jpg">
+<a href="fotos_main/DSC_4299.jpg"><img src="fotos_main/DSC_4299.jpg" alt=""></a>
+<a href="fotos_main/DSC_4335.jpg"><img src="fotos_main/DSC_4335.jpg" class="wide" alt=""></a>
+<a href="fotos_main/DSC_4700.jpg"><img src="fotos_main/DSC_4700.jpg" alt=""></a>
+<a href="fotos_main/DSC_4842.jpg"><img src="fotos_main/DSC_4842.jpg" alt=""></a>
+<a href="fotos_main/DSC_4848.jpg"><img src="fotos_main/DSC_4848.jpg" alt=""></a>
 
-<img src="fotos_main/DSC_5253.jpg">
-<img src="fotos_main/DSC_5297.jpg">
-<img src="fotos_main/DSC_5304.jpg">
-<img src="fotos_main/DSC_5341.jpg" class="wide">
-<img src="fotos_main/foto1.JPG">
+<a href="fotos_main/DSC_5253.jpg"><img src="fotos_main/DSC_5253.jpg" class="tall" alt=""></a>
+<a href="fotos_main/DSC_5297.jpg"><img src="fotos_main/DSC_5297.jpg" alt=""></a>
+<a href="fotos_main/DSC_5304.jpg"><img src="fotos_main/DSC_5304.jpg" alt=""></a>
+<a href="fotos_main/DSC_5341.jpg"><img src="fotos_main/DSC_5341.jpg" class="wide" alt=""></a>
+<a href="fotos_main/foto1.JPG"><img src="fotos_main/foto1.JPG" alt=""></a>
 
-<img src="fotos_main/retouch_2025100515044373.jpg">
+<a href="fotos_main/retouch_2025100515044373.jpg"><img src="fotos_main/retouch_2025100515044373.jpg" alt=""></a>
 
 </div>
 
@@ -131,12 +122,28 @@ Aquí encontrarás una selección de imágenes de diferentes partidos.
 
 <footer>
 <p>
-<a href="mailto:unairealzale@gmail.com">Gmail</a> |
-<a href="https://www.instagram.com/unailofotos/">Instagram</a> |
-<a href="https://www.tiktok.com/@unailoo">TikTok</a> |
+Gmail: unairealzale@gmail.com | 
+<a href="https://www.instagram.com/unailofotos/">Instagram</a> | 
+<a href="https://www.tiktok.com/@unailoo">TikTok</a> | 
 <a href="https://flic.kr/ps/47n1k3">Flickr</a>
 </p>
 </footer>
+
+<!-- lightGallery JS -->
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.0/lightgallery.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.0/plugins/thumbnail/lg-thumbnail.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.0/plugins/zoom/lg-zoom.umd.min.js"></script>
+
+<script>
+// inicializa lightGallery
+lightGallery(document.getElementById('lightgallery'), {
+    selector: 'a',
+    download: false,
+    thumbnail: true,
+    animateThumb: true,
+    showThumbByDefault: true,
+});
+</script>
 
 </body>
 </html>
