@@ -169,15 +169,18 @@ Gmail: unairealzale@gmail.com |
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.0/lightgallery.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.0/plugins/thumbnail/lg-thumbnail.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.0/plugins/zoom/lg-zoom.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.0/plugins/autoplay/lg-autoplay.umd.min.js"></script>
 
 <script>
-// Inicializa lightGallery para el collage principal
 lightGallery(document.getElementById('lightgallery'), {
     selector: 'a',
     download: false,
     thumbnail: true,
     animateThumb: true,
     showThumbByDefault: true,
+    controls: true,        // habilita flechas izquierda/derecha
+    mode: 'lg-slide',      // efecto de slide horizontal
+    loop: true             // permite pasar de la última a la primera
 });
 </script>
 
