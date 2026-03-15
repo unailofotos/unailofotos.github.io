@@ -1,77 +1,110 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio - Unai Lopez</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header { background-color: #333; color: white; padding: 10px 0; text-align: center; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; }
-        section { padding: 20px; }
-        .responsive {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .photo { margin: 10px; border: 1px solid #ccc; }
-        img { max-width: 100%; height: auto; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio - Unai Lopez</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: white; color: #222; }
+    header { background-color: #fff; color: #222; padding: 20px 0; text-align: center; border-bottom: 1px solid #ccc; }
+    nav a { color: #222; margin: 0 15px; text-decoration: none; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    section { padding: 40px 20px; max-width: 1200px; margin: auto; }
+    h2 { margin-bottom: 20px; text-align: center; }
+    
+    /* Mini galería y thumbnails */
+    .gallery, .albums { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .gallery img, .album-thumb img { width: 200px; height: 140px; object-fit: cover; border-radius: 6px; transition: transform 0.2s; }
+    .gallery img:hover, .album-thumb img:hover { transform: scale(1.05); cursor: pointer; }
+    .album-thumb { text-align: center; display: flex; flex-direction: column; align-items: center; }
+
+    /* Footer */
+    footer { padding: 40px 20px; text-align: center; background: #f5f5f5; font-size: 0.9rem; }
+    footer a { margin: 0 10px; text-decoration: none; color: #222; font-weight: bold; }
+    footer a:hover { text-decoration: underline; }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Portafolio de Unai Lopez</h1>
-        <nav>
-            <a href="#sobre-mi">Sobre mí</a>
-            <a href="#algunas-fotos">Algunas fotos</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-    </header>
-    <section id="sobre-mi">
-        <h2>Sobre mí</h2>
-        <p>Soy Unai Lopez, fotógrafo de deportes con pasión por capturar la acción y la emoción en cada partido. Mi experiencia incluye trabajar con equipos profesionales y aficionados.</p>
-    </section>
-    <section id="algunas-fotos">
-        <h2>Algunas fotos</h2>
-        <div class="responsive">
-            <div class="photo"><img src="foto1.jpg" alt="Foto 1"></div>
-            <div class="photo"><img src="foto2.jpg" alt="Foto 2"></div>
-            <div class="photo"><img src="foto3.jpg" alt="Foto 3"></div>
-        </div>
-    </section>
-    <section id="portfolio">
-        <h2>Portfolio: Álbumes por partido</h2>
-        <ul>
-            <li><a href="#album-partido1">Partido 1 - 16 fotos</a></li>
-            <li><a href="album2.html">Partido 2</a></li>
-            <li><a href="album3.html">Partido 3</a></li>
-        </ul>
-    </section>
-    <section id="album-partido1">
-        <h2>Álbum: Partido 1</h2>
-        <div class="responsive">
-            <div class="photo"><img src="DSC_8105.jpg" alt="Foto DSC_8105"></div>
-            <div class="photo"><img src="DSC_8107.jpg" alt="Foto DSC_8107"></div>
-            <div class="photo"><img src="DSC_8116.JPG" alt="Foto DSC_8116"></div>
-            <div class="photo"><img src="DSC_8119.jpg" alt="Foto DSC_8119"></div>
-            <div class="photo"><img src="DSC_8131.jpg" alt="Foto DSC_8131"></div>
-            <div class="photo"><img src="DSC_8132.jpg" alt="Foto DSC_8132"></div>
-            <div class="photo"><img src="DSC_8134.jpg" alt="Foto DSC_8134"></div>
-            <div class="photo"><img src="DSC_8158.jpg" alt="Foto DSC_8158"></div>
-            <div class="photo"><img src="DSC_8161.jpg" alt="Foto DSC_8161"></div>
-            <div class="photo"><img src="DSC_8176.jpg" alt="Foto DSC_8176"></div>
-            <div class="photo"><img src="DSC_8178.jpg" alt="Foto DSC_8178"></div>
-            <div class="photo"><img src="DSC_8182.jpg" alt="Foto DSC_8182"></div>
-            <div class="photo"><img src="DSC_8199.jpg" alt="Foto DSC_8199"></div>
-            <div class="photo"><img src="DSC_8201.jpg" alt="Foto DSC_8201"></div>
-            <div class="photo"><img src="DSC_8210.jpg" alt="Foto DSC_8210"></div>
-            <div class="photo"><img src="DSC_8225.jpg" alt="Foto DSC_8225"></div>
-        </div>
-    </section>
-    <section id="contacto">
-        <h2>Contacto</h2>
-        <p>Puedes contactarme a través de mi correo electrónico: unairealzale@gmail.com</p>
-    </section>
+
+<header>
+    <h1>Portafolio de Unai Lopez</h1>
+    <nav>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#algunas-fotos">Algunas fotos</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+</header>
+
+<section id="sobre-mi">
+    <h2>Sobre mí</h2>
+    <p>Soy Unai Lopez, fotógrafo de deportes con pasión por capturar la acción y la emoción en cada partido. Mi experiencia incluye trabajar con equipos profesionales y aficionados.</p>
+</section>
+
+<section id="algunas-fotos">
+    <h2>Algunas fotos</h2>
+    <div class="gallery">
+        <img src="DSC_8105.jpg" alt="Foto DSC_8105">
+        <img src="DSC_8107.jpg" alt="Foto DSC_8107">
+        <img src="DSC_8116.JPG" alt="Foto DSC_8116">
+        <img src="DSC_8119.jpg" alt="Foto DSC_8119">
+        <img src="DSC_8131.jpg" alt="Foto DSC_8131">
+        <img src="DSC_8132.jpg" alt="Foto DSC_8132">
+        <img src="DSC_8134.jpg" alt="Foto DSC_8134">
+        <img src="DSC_8158.jpg" alt="Foto DSC_8158">
+        <img src="DSC_8161.jpg" alt="Foto DSC_8161">
+        <img src="DSC_8176.jpg" alt="Foto DSC_8176">
+        <img src="DSC_8178.jpg" alt="Foto DSC_8178">
+        <img src="DSC_8182.jpg" alt="Foto DSC_8182">
+        <img src="DSC_8199.jpg" alt="Foto DSC_8199">
+        <img src="DSC_8201.jpg" alt="Foto DSC_8201">
+        <img src="DSC_8210.jpg" alt="Foto DSC_8210">
+        <img src="DSC_8225.jpg" alt="Foto DSC_8225">
+    </div>
+</section>
+
+<section id="portfolio">
+    <h2>Portfolio: Álbumes por partido</h2>
+    <div class="albums">
+        <a class="album-thumb" href="#album-partido1">
+            <img src="DSC_8105.jpg" alt="Partido 1">
+            <p>Partido 1</p>
+        </a>
+        <!-- Puedes agregar más álbumes aquí -->
+    </div>
+</section>
+
+<section id="album-partido1">
+    <h2>Álbum: Partido 1</h2>
+    <div class="gallery">
+        <img src="DSC_8105.jpg" alt="Foto DSC_8105">
+        <img src="DSC_8107.jpg" alt="Foto DSC_8107">
+        <img src="DSC_8116.JPG" alt="Foto DSC_8116">
+        <img src="DSC_8119.jpg" alt="Foto DSC_8119">
+        <img src="DSC_8131.jpg" alt="Foto DSC_8131">
+        <img src="DSC_8132.jpg" alt="Foto DSC_8132">
+        <img src="DSC_8134.jpg" alt="Foto DSC_8134">
+        <img src="DSC_8158.jpg" alt="Foto DSC_8158">
+        <img src="DSC_8161.jpg" alt="Foto DSC_8161">
+        <img src="DSC_8176.jpg" alt="Foto DSC_8176">
+        <img src="DSC_8178.jpg" alt="Foto DSC_8178">
+        <img src="DSC_8182.jpg" alt="Foto DSC_8182">
+        <img src="DSC_8199.jpg" alt="Foto DSC_8199">
+        <img src="DSC_8201.jpg" alt="Foto DSC_8201">
+        <img src="DSC_8210.jpg" alt="Foto DSC_8210">
+        <img src="DSC_8225.jpg" alt="Foto DSC_8225">
+    </div>
+</section>
+
+<footer id="contacto">
+    <h2>Contacto</h2>
+    <p>Puedes contactarme a través de mi correo electrónico: <a href="mailto:unairealzale@gmail.com">unairealzale@gmail.com</a></p>
+    <p>Sígueme: 
+        <a href="https://www.instagram.com/unailofotos/" target="_blank">Instagram</a> | 
+        <a href="https://www.tiktok.com/@unailoo" target="_blank">TikTok</a> | 
+        <a href="https://flic.kr/ps/47n1k3" target="_blank">Flickr</a>
+    </p>
+</footer>
+
 </body>
 </html>
