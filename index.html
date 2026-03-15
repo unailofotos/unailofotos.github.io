@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Unai Lopez</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background-color: #333; color: white; padding: 10px 0; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; }
+        section { padding: 20px; }
+        .responsive {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .photo { margin: 10px; border: 1px solid #ccc; }
+        img { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Portafolio de Unai Lopez</h1>
+        <nav>
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#algunas-fotos">Algunas fotos</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+    <section id="sobre-mi">
+        <h2>Sobre mí</h2>
+        <p>Soy Unai Lopez, fotógrafo de deportes con pasión por capturar la acción y la emoción en cada partido. Mi experiencia incluye trabajar con equipos profesionales y aficionados.</p>
+    </section>
+    <section id="algunas-fotos">
+        <h2>Algunas fotos</h2>
+        <div class="responsive">
+            <div class="photo"><img src="foto1.jpg" alt="Foto 1"></div>
+            <div class="photo"><img src="foto2.jpg" alt="Foto 2"></div>
+            <div class="photo"><img src="foto3.jpg" alt="Foto 3"></div>
+        </div>
+    </section>
+    <section id="portfolio">
+        <h2>Portfolio: Álbumes por partido</h2>
+        <ul>
+            <li><a href="album1.html">Partido 1</a></li>
+            <li><a href="album2.html">Partido 2</a></li>
+            <li><a href="album3.html">Partido 3</a></li>
+        </ul>
+    </section>
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <p>Puedes contactarme a través de mi correo electrónico: unai@example.com</p>
+    </section>
+</body>
+</html>
