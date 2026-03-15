@@ -3,62 +3,190 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portafolio - Unai Lopez</title>
+
+<title>Unai Lopez | Fotografía deportiva</title>
+
 <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: white; color: #222; }
-    header { background-color: #fff; color: #222; padding: 20px 0; text-align: center; border-bottom: 1px solid #ccc; }
-    nav a { color: #222; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    nav a:hover { text-decoration: underline; }
-    section { padding: 40px 20px; max-width: 1200px; margin: auto; }
-    h2 { margin-bottom: 20px; text-align: center; }
 
-    /* Portfolio álbumes */
-    .albums { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-    .album-thumb img { width: 200px; height: 140px; object-fit: cover; border-radius: 6px; transition: transform 0.2s; }
-    .album-thumb:hover img { transform: scale(1.05); cursor: pointer; }
-    .album-thumb { text-align: center; display: flex; flex-direction: column; align-items: center; }
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:white;
+    color:#222;
+}
 
-    /* Footer */
-    footer { padding: 40px 20px; text-align: center; background: #f5f5f5; font-size: 0.9rem; }
-    footer a { margin: 0 10px; text-decoration: none; color: #222; font-weight: bold; }
-    footer a:hover { text-decoration: underline; }
+/* HEADER */
+
+header{
+    text-align:center;
+    padding:40px 20px;
+    border-bottom:1px solid #eee;
+}
+
+header h1{
+    margin:0;
+    font-size:32px;
+}
+
+header p{
+    margin-top:10px;
+    color:#666;
+}
+
+nav{
+    margin-top:20px;
+}
+
+nav a{
+    margin:0 15px;
+    text-decoration:none;
+    color:#222;
+    font-weight:bold;
+}
+
+nav a:hover{
+    opacity:0.6;
+}
+
+/* SECCIONES */
+
+section{
+    max-width:1100px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+/* SOBRE MI */
+
+.about{
+    text-align:center;
+    max-width:700px;
+    margin:auto;
+    line-height:1.6;
+}
+
+/* PORTFOLIO */
+
+.albums{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.album{
+    text-align:center;
+}
+
+.album img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    border-radius:6px;
+    transition:transform 0.2s;
+}
+
+.album img:hover{
+    transform:scale(1.05);
+}
+
+.album p{
+    margin-top:8px;
+    font-weight:bold;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:40px 20px;
+    border-top:1px solid #eee;
+}
+
+footer a{
+    margin:0 10px;
+    text-decoration:none;
+    color:#222;
+}
+
+footer a:hover{
+    opacity:0.6;
+}
+
 </style>
 </head>
+
 <body>
 
 <header>
-    <h1>Portafolio de Unai Lopez</h1>
-    <nav>
-        <a href="#sobre-mi">Sobre mí</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
+
+<h1>Unai Lopez</h1>
+<p>Fotografía deportiva</p>
+
+<nav>
+<a href="#sobre">Sobre mí</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#contacto">Contacto</a>
+</nav>
+
 </header>
 
-<section id="sobre-mi">
-    <h2>Sobre mí</h2>
-    <p>Soy Unai Lopez, fotógrafo de deportes con pasión por capturar la acción y la emoción en cada partido.</p>
+
+<section id="sobre">
+
+<h2>Sobre mí</h2>
+
+<div class="about">
+
+<p>
+Soy Unai Lopez, fotógrafo especializado en fotografía deportiva.
+Me apasiona capturar la intensidad, la emoción y los momentos
+decisivos de cada partido.
+</p>
+
+<p>
+En este portfolio encontrarás una selección de álbumes organizados
+por partidos, donde muestro mi trabajo en diferentes encuentros.
+</p>
+
+</div>
+
 </section>
+
 
 <section id="portfolio">
-    <h2>Portfolio: Álbumes por partido</h2>
-    <div class="albums">
-        <a class="album-thumb" href="albums/partido1/index.html">
-            <img src="albums/partido1/DSC_8105.jpg" alt="Partido 1">
-            <p>Partido 1</p>
-        </a>
-        <!-- Aquí puedes agregar más álbumes -->
-    </div>
+
+<h2>Portfolio</h2>
+
+<div class="albums">
+
+<a class="album" href="albums/partido1/index.html">
+<img src="albums/partido1/DSC_8105.jpg">
+<p>Partido 1</p>
+</a>
+
+<!-- aquí podrás añadir más partidos -->
+
+</div>
+
 </section>
 
+
 <footer id="contacto">
-    <h2>Contacto</h2>
-    <p>Puedes contactarme a través de mi correo electrónico: <a href="mailto:unairealzale@gmail.com">unairealzale@gmail.com</a></p>
-    <p>Sígueme: 
-        <a href="https://www.instagram.com/unailofotos/" target="_blank">Instagram</a> | 
-        <a href="https://www.tiktok.com/@unailoo" target="_blank">TikTok</a> | 
-        <a href="https://flic.kr/ps/47n1k3" target="_blank">Flickr</a>
-    </p>
+
+<h2>Contacto</h2>
+
+<p>
+<a href="mailto:unairealzale@gmail.com">Gmail</a> |
+<a href="https://www.instagram.com/unailofotos/" target="_blank">Instagram</a> |
+<a href="https://www.tiktok.com/@unailoo" target="_blank">TikTok</a> |
+<a href="https://flic.kr/ps/47n1k3" target="_blank">Flickr</a>
+</p>
+
 </footer>
 
 </body>
