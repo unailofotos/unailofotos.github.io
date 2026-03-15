@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,51 +10,50 @@
 
 <style>
 body{
-font-family:Arial;
-margin:0;
-background:white;
-color:#222;
+    font-family:Arial;
+    margin:0;
+    background:white;
+    color:#222;
 }
 
 header{
-text-align:center;
-padding:50px 20px;
+    text-align:center;
+    padding:50px 20px;
 }
 
 header h1{
-margin:0;
-font-size:34px;
+    margin:0;
+    font-size:34px;
 }
 
 header p{
-color:#666;
+    color:#666;
 }
 
 section{
-max-width:1200px;
-margin:auto;
-padding:40px 20px;
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
 }
 
-/* COLLAGE */
-
+/* COLLAGE PRINCIPAL */
 .collage{
-display:grid;
-grid-template-columns: repeat(5,1fr);
-gap:10px;
-margin-top:30px;
+    display:grid;
+    grid-template-columns: repeat(5,1fr);
+    gap:10px;
+    margin-top:30px;
 }
 
 .collage img{
-width:100%;
-height:auto;
-border-radius:6px;
-transition:0.25s;
-cursor:pointer;
+    width:100%;
+    height:auto;  /* mantiene proporción original */
+    border-radius:6px;
+    cursor:pointer;
+    transition:0.25s;
 }
 
 .collage img:hover{
-transform:scale(1.03);
+    transform:scale(1.03);
 }
 
 /* tamaños distintos */
@@ -63,16 +61,43 @@ transform:scale(1.03);
 .wide{ grid-column: span 2; }
 .tall{ grid-row: span 2; }
 
+/* MINIATURA DEL ALBUM */
+.albums{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+    margin-top:40px;
+}
+
+.album{
+    text-align:center;
+    text-decoration:none;
+    color:#222;
+}
+
+.album-cover{
+    width:200px;        /* ancho máximo de portada */
+    height:auto;        /* mantiene proporción */
+    border-radius:6px;
+    transition:0.25s;
+}
+
+.album-cover:hover{
+    transform:scale(1.05);
+}
+
+/* FOOTER */
 footer{
-text-align:center;
-padding:40px;
-border-top:1px solid #eee;
+    text-align:center;
+    padding:40px;
+    border-top:1px solid #eee;
 }
 
 footer a{
-margin:0 10px;
-text-decoration:none;
-color:#222;
+    margin:0 10px;
+    text-decoration:none;
+    color:#222;
 }
 </style>
 </head>
@@ -84,6 +109,7 @@ color:#222;
 <p>Fotografía deportiva</p>
 </header>
 
+<!-- INTRODUCCIÓN -->
 <section>
 <p style="text-align:center; max-width:700px; margin:auto; line-height:1.6;">
 Fotografía deportiva centrada en capturar la intensidad, la emoción y los momentos decisivos del fútbol.
@@ -91,9 +117,8 @@ Aquí encontrarás una selección de imágenes de diferentes partidos.
 </p>
 </section>
 
+<!-- COLLAGE PRINCIPAL -->
 <section>
-
-<!-- LIGHTGALLERY -->
 <div id="lightgallery" class="collage">
 
 <a href="fotos_main/DSC_0951.JPG"><img src="fotos_main/DSC_0951.JPG" class="big" alt=""></a>
@@ -117,9 +142,20 @@ Aquí encontrarás una selección de imágenes de diferentes partidos.
 <a href="fotos_main/retouch_2025100515044373.jpg"><img src="fotos_main/retouch_2025100515044373.jpg" alt=""></a>
 
 </div>
-
 </section>
 
+<!-- MINIATURA DEL ALBUM -->
+<section>
+<h2>Álbumes</h2>
+<div class="albums">
+    <a class="album" href="albums/kostkas-rso/index.html">
+        <img src="albums/kostkas-rso/DSC_8116.JPG" alt="Kostkas - RSO" class="album-cover">
+        <p>Kostkas - RSO</p>
+    </a>
+</div>
+</section>
+
+<!-- FOOTER -->
 <footer>
 <p>
 Gmail: unairealzale@gmail.com | 
@@ -135,7 +171,7 @@ Gmail: unairealzale@gmail.com |
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.0/plugins/zoom/lg-zoom.umd.min.js"></script>
 
 <script>
-// inicializa lightGallery
+// Inicializa lightGallery para el collage principal
 lightGallery(document.getElementById('lightgallery'), {
     selector: 'a',
     download: false,
@@ -147,13 +183,3 @@ lightGallery(document.getElementById('lightgallery'), {
 
 </body>
 </html>
-
-<section>
-<h2>Álbumes</h2>
-<div class="albums">
-    <a class="album" href="albums/kostkas-rso/index.html">
-        <img src="albums/kostkas-rso/DSC_8116.jpg" alt="Kostkas - RSO" class="album-cover">
-        <p>Kostkas - RSO</p>
-    </a>
-</div>
-</section>
