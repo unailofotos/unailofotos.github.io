@@ -5,167 +5,221 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UNAILOFOTOS | Fotografía deportiva</title>
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600&family=Lobster&display=swap" rel="stylesheet">
-
 <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
 
 <style>
-body{
-    font-family: 'Cabin', Arial, sans-serif;
-    margin:0;
-    background:white;
-    color:#111;
-}
+    :root {
+        --bg-color: #0a0a0a;
+        --text-color: #ffffff;
+        --accent-color: #e63946; /* Un rojo deportivo para detalles */
+        --secondary-text: #a0a0a0;
+    }
 
-header{
-    text-align:center;
-    padding:60px 20px 40px 20px;
-}
+    body {
+        font-family: 'Cabin', Arial, sans-serif;
+        margin: 0;
+        background: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+    }
 
-header h1{
-    font-family: 'Lobster', cursive;
-    font-size:60px;  /* más grande */
-    font-weight:bold;
-    margin-bottom:10px;
-    color:#222;
-}
+    /* HEADER MODERNO */
+    header {
+        text-align: center;
+        padding: 80px 20px 60px 20px;
+        background: linear-gradient(to bottom, #1a1a1a, var(--bg-color));
+    }
 
-header p{
-    font-family: 'Cabin', sans-serif;
-    font-size:20px;  /* más pequeño que el título */
-    font-weight:400;
-    color:#555;
-    max-width:700px;
-    margin:0 auto;
-}
+    header h1 {
+        font-family: 'Lobster', cursive;
+        font-size: clamp(50px, 8vw, 80px); /* Tamaño fluido */
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+        text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+    }
 
-/* COLLAGE PRINCIPAL */
-.gallery{
-    column-count:5;
-    column-gap:10px;
-    padding:30px;
-    max-width:1400px;
-    margin:auto;
-}
+    header p {
+        font-size: 1.2rem;
+        color: var(--secondary-text);
+        max-width: 600px;
+        margin: 0 auto;
+        font-style: italic;
+    }
 
-.gallery img{
-    width:100%;
-    margin-bottom:10px;
-    border-radius:6px;
-    cursor:pointer;
-}
+    /* GALERÍA MASONRY RESPONSIVA */
+    .gallery {
+        column-gap: 15px;
+        padding: 20px;
+        max-width: 1400px;
+        margin: auto;
+    }
 
-/* SECCIÓN ÁLBUMES */
-.albums{
-    display:flex;
-    justify-content:center;
-    gap:40px;
-    padding:40px;
-    flex-wrap:wrap;
-}
+    /* Columnas según el dispositivo */
+    @media (min-width: 1024px) { .gallery { column-count: 5; } }
+    @media (max-width: 1023px) and (min-width: 768px) { .gallery { column-count: 3; } }
+    @media (max-width: 767px) { .gallery { column-count: 2; } }
 
-.album{
-    text-align:center;
-    text-decoration:none;
-    color:#111;
-}
+    .gallery a {
+        display: block;
+        margin-bottom: 15px;
+        overflow: hidden;
+        border-radius: 8px;
+        background: #1a1a1a;
+    }
 
-.album img{
-    width:220px;
-    border-radius:6px;
-    transition:0.2s;
-}
+    .gallery img {
+        width: 100%;
+        display: block;
+        transition: transform 0.5s ease, filter 0.5s ease;
+        filter: brightness(0.9);
+    }
 
-.album img:hover{
-    transform:scale(1.05);
-}
+    .gallery img:hover {
+        transform: scale(1.08);
+        filter: brightness(1.1);
+    }
 
-/* TÍTULOS DE ÁLBUMES MÁS GRANDES */
-.album p {
-    font-size: 20px;      /* tamaño más grande */
-    font-weight: 600;     /* negrita */
-    margin-top: 10px;     /* separación de la imagen */
-    color: #222;
-}
+    /* SECCIÓN ÁLBUMES TIPO CARD */
+    .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin: 60px 0 30px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
 
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:40px;
-    color:#555;
-    font-size:14px;
-}
+    .albums {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        padding: 40px 20px;
+        flex-wrap: wrap;
+    }
 
-footer a{
-    color:#000;
-    text-decoration:none;
-    margin:0 8px;
-}
+    .album {
+        text-decoration: none;
+        color: var(--text-color);
+        background: #161616;
+        padding: 15px;
+        border-radius: 12px;
+        transition: 0.3s;
+        border: 1px solid #222;
+        max-width: 250px;
+    }
+
+    .album:hover {
+        background: #222;
+        border-color: var(--accent-color);
+        transform: translateY(-10px);
+    }
+
+    .album img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover; /* Recorta la imagen para que todas midan igual */
+        border-radius: 8px;
+    }
+
+    .album p {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin: 15px 0 5px;
+        text-align: center;
+    }
+
+    /* FOOTER */
+    footer {
+        text-align: center;
+        padding: 60px 20px;
+        background: #050505;
+        border-top: 1px solid #1a1a1a;
+        margin-top: 50px;
+    }
+
+    footer p {
+        color: var(--secondary-text);
+        margin-bottom: 20px;
+    }
+
+    footer a {
+        color: var(--text-color);
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: 0.3s;
+        opacity: 0.7;
+    }
+
+    footer a:hover {
+        color: var(--accent-color);
+        opacity: 1;
+    }
+
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>UNAILOFOTOS</h1>
-<p>Capturando la emoción de cada partido, congelando momentos de fútbol que cuentan historias sin necesidad de palabras.</p>
+    <h1>UNAILOFOTOS</h1>
+    <p>Capturando la emoción del fútbol, congelando historias en cada disparo.</p>
 </header>
 
-<!-- COLLAGE DE FOTOS DE INTRO -->
 <section id="intro">
-<div id="lightgallery" class="gallery">
-
-<a href="fotos_main/DSC_0951.JPG"><img src="fotos_main/DSC_0951.JPG"></a>
-<a href="fotos_main/DSC_2506.jpg"><img src="fotos_main/DSC_2506.jpg"></a>
-<a href="fotos_main/DSC_4099.jpg"><img src="fotos_main/DSC_4099.jpg"></a>
-<a href="fotos_main/DSC_4139.jpg"><img src="fotos_main/DSC_4139.jpg"></a>
-<a href="fotos_main/DSC_4267.jpg"><img src="fotos_main/DSC_4267.jpg"></a>
-<a href="fotos_main/DSC_4299.jpg"><img src="fotos_main/DSC_4299.jpg"></a>
-<a href="fotos_main/DSC_4335.jpg"><img src="fotos_main/DSC_4335.jpg"></a>
-<a href="fotos_main/DSC_4700.jpg"><img src="fotos_main/DSC_4700.jpg"></a>
-<a href="fotos_main/DSC_4842.jpg"><img src="fotos_main/DSC_4842.jpg"></a>
-<a href="fotos_main/DSC_4848.jpg"><img src="fotos_main/DSC_4848.jpg"></a>
-<a href="fotos_main/DSC_5253.jpg"><img src="fotos_main/DSC_5253.jpg"></a>
-<a href="fotos_main/DSC_5297.jpg"><img src="fotos_main/DSC_5297.jpg"></a>
-<a href="fotos_main/DSC_5304.jpg"><img src="fotos_main/DSC_5304.jpg"></a>
-<a href="fotos_main/DSC_5341.jpg"><img src="fotos_main/DSC_5341.jpg"></a>
-<a href="fotos_main/foto1.JPG"><img src="fotos_main/foto1.JPG"></a>
-<a href="fotos_main/retouch_2025100515044373.jpg"><img src="fotos_main/retouch_2025100515044373.jpg"></a>
-
-</div>
+    <div id="lightgallery" class="gallery">
+        <a href="fotos_main/DSC_0951.JPG"><img src="fotos_main/DSC_0951.JPG"></a>
+        <a href="fotos_main/DSC_2506.jpg"><img src="fotos_main/DSC_2506.jpg"></a>
+        <a href="fotos_main/DSC_4099.jpg"><img src="fotos_main/DSC_4099.jpg"></a>
+        <a href="fotos_main/DSC_4139.jpg"><img src="fotos_main/DSC_4139.jpg"></a>
+        <a href="fotos_main/DSC_4267.jpg"><img src="fotos_main/DSC_4267.jpg"></a>
+        <a href="fotos_main/DSC_4299.jpg"><img src="fotos_main/DSC_4299.jpg"></a>
+        <a href="fotos_main/DSC_4335.jpg"><img src="fotos_main/DSC_4335.jpg"></a>
+        <a href="fotos_main/DSC_4700.jpg"><img src="fotos_main/DSC_4700.jpg"></a>
+        <a href="fotos_main/DSC_4842.jpg"><img src="fotos_main/DSC_4842.jpg"></a>
+        <a href="fotos_main/DSC_4848.jpg"><img src="fotos_main/DSC_4848.jpg"></a>
+        <a href="fotos_main/DSC_5253.jpg"><img src="fotos_main/DSC_5253.jpg"></a>
+        <a href="fotos_main/DSC_5297.jpg"><img src="fotos_main/DSC_5297.jpg"></a>
+        <a href="fotos_main/DSC_5304.jpg"><img src="fotos_main/DSC_5304.jpg"></a>
+        <a href="fotos_main/DSC_5341.jpg"><img src="fotos_main/DSC_5341.jpg"></a>
+        <a href="fotos_main/foto1.JPG"><img src="fotos_main/foto1.JPG"></a>
+        <a href="fotos_main/retouch_2025100515044373.jpg"><img src="fotos_main/retouch_2025100515044373.jpg"></a>
+    </div>
 </section>
 
-<!-- ÁLBUMES -->
 <section>
-<h2 style="text-align:center; font-size:36px; font-weight:600; margin-bottom:30px;">Álbumes</h2>
-<div class="albums">
+    <h2 class="section-title">Álbumes</h2>
+    <div class="albums">
+        <a class="album" href="albums/kostkas-rso/index.html">
+            <img src="albums/kostkas-rso/DSC_8116.JPG">
+            <p>Kostkas - RSO</p>
+        </a>
 
-<a class="album" href="albums/kostkas-rso/index.html">
-<img src="albums/kostkas-rso/DSC_8116.JPG">
-<p>Kostkas - RSO</p>
-</a>
-
-<a class="album" href="albums/rso-fcb/index.html">
-<img src="albums/rso-fcb/DSC_6268.jpg">
-<p>RSO - FCB</p>
-</a>
-
-</div>
+        <a class="album" href="albums/rso-fcb/index.html">
+            <img src="albums/rso-fcb/DSC_6268.jpg">
+            <p>RSO - FCB</p>
+        </a>
+    </div>
 </section>
 
 <footer>
-<p>gmail: unairealzale@gmail.com</p>
-<p>
-<a href="https://www.instagram.com/unailofotos/" target="_blank">Instagram</a>
-<a href="https://www.tiktok.com/@unailoo" target="_blank">TikTok</a>
-<a href="https://flic.kr/ps/47n1k3" target="_blank">Flickr</a>
-</p>
+    <p>📧 unairealzale@gmail.com</p>
+    <div class="social-links">
+        <a href="https://www.instagram.com/unailofotos/" target="_blank">INSTAGRAM</a>
+        <a href="https://www.tiktok.com/@unailoo" target="_blank">TIKTOK</a>
+        <a href="https://flic.kr/ps/47n1k3" target="_blank">FLICKR</a>
+    </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
 <script>
-lightGallery(document.getElementById('lightgallery'),{download:false});
+    lightGallery(document.getElementById('lightgallery'), {
+        download: false,
+        speed: 500,
+        mode: 'lg-fade'
+    });
 </script>
 
 </body>
