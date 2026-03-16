@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSO - OVIEDO | UNAILOFOTOS</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600&family=Lobster&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
+
+<style>
+    :root {
+        --bg-color: #0a0a0a;
+        --text-color: #ffffff;
+        --accent-color: #e63946;
+        --secondary-text: #a0a0a0;
+    }
+
+    body {
+        font-family: 'Cabin', Arial, sans-serif;
+        margin: 0;
+        background: var(--bg-color);
+        color: var(--text-color);
+    }
+
+    header {
+        text-align: center;
+        padding: 60px 20px 40px;
+    }
+
+    header h1 {
+        font-family: 'Lobster', cursive;
+        font-size: 3rem;
+        margin: 0;
+        color: var(--text-color);
+        text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .gallery {
+        column-gap: 15px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    @media (min-width: 1024px) { .gallery { column-count: 4; } }
+    @media (max-width: 1023px) and (min-width: 768px) { .gallery { column-count: 3; } }
+    @media (max-width: 767px) { .gallery { column-count: 2; } }
+
+    .gallery a {
+        display: block;
+        margin-bottom: 15px;
+        overflow: hidden;
+        border-radius: 8px;
+        background: #1a1a1a;
+    }
+
+    .gallery img {
+        width: 100%;
+        display: block;
+        transition: transform 0.4s ease, filter 0.4s ease;
+        filter: brightness(0.85);
+    }
+
+    .gallery img:hover {
+        transform: scale(1.05);
+        filter: brightness(1.1);
+    }
+
+    .back-container {
+        text-align: center;
+        margin: 50px 0 80px;
+    }
+
+    .back-link {
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 600;
+        padding: 12px 25px;
+        border: 1px solid #333;
+        border-radius: 30px;
+        transition: 0.3s;
+        display: inline-block;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+    }
+
+    .back-link:hover {
+        background: var(--text-color);
+        color: var(--bg-color);
+        border-color: var(--text-color);
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>RSO - OVIEDO</h1>
+</header>
+
+<div id="lightgallery" class="gallery">
+    <a href="ULF_8353.jpg"><img src="ULF_8353.jpg"></a>
+    <a href="ULF_8361.jpg"><img src="ULF_8361.jpg"></a>
+    <a href="ULF_8362.jpg"><img src="ULF_8362.jpg"></a>
+    <a href="ULF_8363.jpg"><img src="ULF_8363.jpg"></a>
+    <a href="ULF_8366.jpg"><img src="ULF_8366.jpg"></a>
+    <a href="ULF_8368.jpg"><img src="ULF_8368.jpg"></a>
+    <a href="ULF_8369.jpg"><img src="ULF_8369.jpg"></a>
+    <a href="ULF_8370.jpg"><img src="ULF_8370.jpg"></a>
+    <a href="ULF_8373.jpg"><img src="ULF_8373.jpg"></a>
+    <a href="ULF_8374.jpg"><img src="ULF_8374.jpg"></a>
+    <a href="ULF_8375.jpg"><img src="ULF_8375.jpg"></a>
+    <a href="ULF_8410.jpg"><img src="ULF_8410.jpg"></a>
+    <a href="ULF_8412.jpg"><img src="ULF_8412.jpg"></a>
+    <a href="ULF_8417.jpg"><img src="ULF_8417.jpg"></a>
+    <a href="ULF_8430.jpg"><img src="ULF_8430.jpg"></a>
+    <a href="ULF_8431.jpg"><img src="ULF_8431.jpg"></a>
+    <a href="ULF_8434.jpg"><img src="ULF_8434.jpg"></a>
+    <a href="ULF_8451.jpg"><img src="ULF_8451.jpg"></a>
+    <a href="ULF_8342.jpg"><img src="ULF_8342.jpg"></a>
+    <a href="ULF_8344.jpg"><img src="ULF_8344.jpg"></a>
+</div>
+
+<div class="back-container">
+    <a href="../../index.html" class="back-link">← VOLVER AL INICIO</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
+<script>
+    lightGallery(document.getElementById('lightgallery'), {
+        download: false,
+        speed: 500,
+        mode: 'lg-fade'
+    });
+</script>
+
+</body>
+</html>
