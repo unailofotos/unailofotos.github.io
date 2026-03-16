@@ -3,84 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNAILOFOTOS | Fotografía deportiva</title>
 
-<title>Unai Lopez | Fotografía deportiva</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600&family=Lobster&display=swap" rel="stylesheet">
 
 <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
 
 <style>
-
 body{
-font-family:Arial, Helvetica, sans-serif;
-margin:0;
-background:white;
-color:#111;
+    font-family: 'Cabin', Arial, sans-serif;
+    margin:0;
+    background:white;
+    color:#111;
 }
 
 header{
-text-align:center;
-padding:40px 20px 20px 20px;
+    text-align:center;
+    padding:60px 20px 40px 20px;
 }
 
 header h1{
-font-size:28px;
-margin-bottom:5px;
+    font-family: 'Lobster', cursive;
+    font-size:60px;  /* más grande */
+    font-weight:bold;
+    margin-bottom:10px;
+    color:#222;
 }
 
 header p{
-color:#666;
+    font-family: 'Cabin', sans-serif;
+    font-size:20px;  /* más pequeño que el título */
+    font-weight:400;
+    color:#555;
+    max-width:700px;
+    margin:0 auto;
 }
 
+/* COLLAGE PRINCIPAL */
 .gallery{
-column-count:5;
-column-gap:10px;
-padding:30px;
-max-width:1400px;
-margin:auto;
+    column-count:5;
+    column-gap:10px;
+    padding:30px;
+    max-width:1400px;
+    margin:auto;
 }
 
 .gallery img{
-width:100%;
-margin-bottom:10px;
-border-radius:6px;
-cursor:pointer;
+    width:100%;
+    margin-bottom:10px;
+    border-radius:6px;
+    cursor:pointer;
 }
 
+/* SECCIÓN ÁLBUMES */
 .albums{
-display:flex;
-justify-content:center;
-gap:40px;
-padding:40px;
-flex-wrap:wrap;
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    padding:40px;
+    flex-wrap:wrap;
 }
 
 .album{
-text-align:center;
-text-decoration:none;
-color:#111;
+    text-align:center;
+    text-decoration:none;
+    color:#111;
 }
 
 .album img{
-width:220px;
-border-radius:6px;
-transition:0.2s;
+    width:220px;
+    border-radius:6px;
+    transition:0.2s;
 }
 
 .album img:hover{
-transform:scale(1.05);
+    transform:scale(1.05);
 }
 
+/* FOOTER */
 footer{
-text-align:center;
-padding:40px;
-color:#555;
-font-size:14px;
+    text-align:center;
+    padding:40px;
+    color:#555;
+    font-size:14px;
 }
 
 footer a{
-color:#000;
-text-decoration:none;
-margin:0 8px;
+    color:#000;
+    text-decoration:none;
+    margin:0 8px;
 }
 
 </style>
@@ -89,16 +101,12 @@ margin:0 8px;
 <body>
 
 <header>
-
-<h1>Unai Lopez</h1>
-
-<p>Fotografía deportiva</p>
-
+<h1>UNAILOFOTOS</h1>
+<p>Capturando la emoción de cada partido, congelando momentos de fútbol que cuentan historias sin necesidad de palabras.</p>
 </header>
 
-
+<!-- COLLAGE DE FOTOS DE INTRO -->
 <section id="intro">
-
 <div id="lightgallery" class="gallery">
 
 <a href="fotos_main/DSC_0951.JPG"><img src="fotos_main/DSC_0951.JPG"></a>
@@ -119,63 +127,38 @@ margin:0 8px;
 <a href="fotos_main/retouch_2025100515044373.jpg"><img src="fotos_main/retouch_2025100515044373.jpg"></a>
 
 </div>
-
 </section>
 
-
+<!-- ÁLBUMES -->
 <section>
-
 <h2 style="text-align:center">Álbumes</h2>
-
 <div class="albums">
 
 <a class="album" href="albums/kostkas-rso/index.html">
-
 <img src="albums/kostkas-rso/DSC_8116.JPG">
-
 <p>Kostkas - RSO</p>
-
 </a>
-
 
 <a class="album" href="albums/rso-fcb/index.html">
-
 <img src="albums/rso-fcb/DSC_6268.jpg">
-
 <p>RSO - FCB</p>
-
 </a>
 
-
 </div>
-
 </section>
 
-
 <footer>
-
 <p>gmail: unairealzale@gmail.com</p>
-
 <p>
-
 <a href="https://www.instagram.com/unailofotos/" target="_blank">Instagram</a>
-
 <a href="https://www.tiktok.com/@unailoo" target="_blank">TikTok</a>
-
 <a href="https://flic.kr/ps/47n1k3" target="_blank">Flickr</a>
-
 </p>
-
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
-
 <script>
-
-lightGallery(document.getElementById('lightgallery'),{
-download:false
-});
-
+lightGallery(document.getElementById('lightgallery'),{download:false});
 </script>
 
 </body>
