@@ -12,7 +12,7 @@
     :root {
         --bg-color: #0a0a0a;
         --text-color: #ffffff;
-        --accent-color: #e63946; /* Un rojo deportivo para detalles */
+        --accent-color: #e63946;
         --secondary-text: #a0a0a0;
     }
 
@@ -24,7 +24,6 @@
         line-height: 1.6;
     }
 
-    /* HEADER MODERNO */
     header {
         text-align: center;
         padding: 80px 20px 60px 20px;
@@ -33,7 +32,7 @@
 
     header h1 {
         font-family: 'Lobster', cursive;
-        font-size: clamp(50px, 8vw, 80px); /* Tamaño fluido */
+        font-size: clamp(50px, 8vw, 80px);
         margin-bottom: 10px;
         letter-spacing: 2px;
         text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
@@ -47,7 +46,6 @@
         font-style: italic;
     }
 
-    /* GALERÍA MASONRY RESPONSIVA */
     .gallery {
         column-gap: 15px;
         padding: 20px;
@@ -55,7 +53,6 @@
         margin: auto;
     }
 
-    /* Columnas según el dispositivo */
     @media (min-width: 1024px) { .gallery { column-count: 5; } }
     @media (max-width: 1023px) and (min-width: 768px) { .gallery { column-count: 3; } }
     @media (max-width: 767px) { .gallery { column-count: 2; } }
@@ -80,7 +77,6 @@
         filter: brightness(1.1);
     }
 
-    /* SECCIÓN ÁLBUMES TIPO CARD */
     .section-title {
         text-align: center;
         font-size: 2.5rem;
@@ -118,7 +114,7 @@
     .album img {
         width: 100%;
         height: 250px;
-        object-fit: cover; /* Recorta la imagen para que todas midan igual */
+        object-fit: cover;
         border-radius: 8px;
     }
 
@@ -129,7 +125,6 @@
         text-align: center;
     }
 
-    /* FOOTER */
     footer {
         text-align: center;
         padding: 60px 20px;
@@ -157,7 +152,6 @@
         color: var(--accent-color);
         opacity: 1;
     }
-
 </style>
 </head>
 
@@ -199,6 +193,11 @@
         <a class="album" href="albums/rso-fcb/index.html">
             <img src="albums/rso-fcb/DSC_6268.jpg">
             <p>RSO - FCB</p>
+        </a>
+
+        <a class="album" href="albums/rso-oviedo/index.html">
+            <img src="albums/rso-oviedo/oviedo.jpg">
+            <p>RSO - OVIEDO</p>
         </a>
     </div>
 </section>
