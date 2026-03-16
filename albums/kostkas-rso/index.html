@@ -1,125 +1,104 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kostkas - RSO | Álbum</title>
 
-<!-- lightGallery CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.8.0/css/lightgallery-bundle.min.css">
+<head>
+
+<meta charset="UTF-8">
+
+<title>Kostkas - RSO</title>
+
+<link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
 
 <style>
+
 body{
-    font-family: Arial;
-    margin:0;
-    background:white;
-    color:#222;
+font-family:Arial;
+margin:0;
+background:white;
 }
 
 header{
-    text-align:center;
-    padding:40px 20px;
+text-align:center;
+padding:40px;
 }
 
-header h1{
-    margin:0;
-    font-size:30px;
+.gallery{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+max-width:1200px;
+margin:auto;
+padding:20px;
 }
 
-header p{
-    color:#666;
+.gallery img{
+width:100%;
+border-radius:5px;
+cursor:pointer;
 }
 
-section{
-    max-width:1200px;
-    margin:auto;
-    padding:20px;
+.back{
+text-align:center;
+margin:20px;
 }
 
-/* COLLAGE ALBUM */
-.collage{
-    display:grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap:10px;
+a{
+text-decoration:none;
+color:black;
 }
 
-.collage img{
-    width:100%;
-    height:auto;  /* mantiene proporción original */
-    border-radius:6px;
-    cursor:pointer;
-    transition:0.25s;
-}
-
-.collage img:hover{
-    transform:scale(1.03);
-}
-
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:20px;
-    border-top:1px solid #eee;
-}
-
-footer a{
-    text-decoration:none;
-    color:#222;
-    margin:0 10px;
-}
 </style>
+
 </head>
 
 <body>
 
 <header>
+
 <h1>Kostkas - RSO</h1>
-<p>Álbum de fotos </p>
+
 </header>
 
-<section>
-<div id="lightgallery" class="collage">
-    <a href="DSC_8105.jpg"><img src="DSC_8105.jpg" alt=""></a>
-    <a href="DSC_8107.jpg"><img src="DSC_8107.jpg" alt=""></a>
-    <a href="DSC_8116.JPG"><img src="DSC_8116.JPG" alt=""></a>
-    <a href="DSC_8119.jpg"><img src="DSC_8119.jpg" alt=""></a>
-    <a href="DSC_8131.jpg"><img src="DSC_8131.jpg" alt=""></a>
-    <a href="DSC_8132.jpg"><img src="DSC_8132.jpg" alt=""></a>
-    <a href="DSC_8134.jpg"><img src="DSC_8134.jpg" alt=""></a>
-    <a href="DSC_8158.jpg"><img src="DSC_8158.jpg" alt=""></a>
-    <a href="DSC_8161.jpg"><img src="DSC_8161.jpg" alt=""></a>
-    <a href="DSC_8176.jpg"><img src="DSC_8176.jpg" alt=""></a>
-    <a href="DSC_8178.jpg"><img src="DSC_8178.jpg" alt=""></a>
-    <a href="DSC_8182.jpg"><img src="DSC_8182.jpg" alt=""></a>
-    <a href="DSC_8199.jpg"><img src="DSC_8199.jpg" alt=""></a>
-    <a href="DSC_8201.jpg"><img src="DSC_8201.jpg" alt=""></a>
-    <a href="DSC_8210.jpg"><img src="DSC_8210.jpg" alt=""></a>
-    <a href="DSC_8225.jpg"><img src="DSC_8225.jpg" alt=""></a>
+
+<div id="lightgallery" class="gallery">
+
+<a href="DSC_8105.jpg"><img src="DSC_8105.jpg"></a>
+<a href="DSC_8107.jpg"><img src="DSC_8107.jpg"></a>
+<a href="DSC_8116.JPG"><img src="DSC_8116.JPG"></a>
+<a href="DSC_8119.jpg"><img src="DSC_8119.jpg"></a>
+<a href="DSC_8131.jpg"><img src="DSC_8131.jpg"></a>
+<a href="DSC_8132.jpg"><img src="DSC_8132.jpg"></a>
+<a href="DSC_8134.jpg"><img src="DSC_8134.jpg"></a>
+<a href="DSC_8158.jpg"><img src="DSC_8158.jpg"></a>
+<a href="DSC_8161.jpg"><img src="DSC_8161.jpg"></a>
+<a href="DSC_8176.jpg"><img src="DSC_8176.jpg"></a>
+<a href="DSC_8178.jpg"><img src="DSC_8178.jpg"></a>
+<a href="DSC_8182.jpg"><img src="DSC_8182.jpg"></a>
+<a href="DSC_8199.jpg"><img src="DSC_8199.jpg"></a>
+<a href="DSC_8201.jpg"><img src="DSC_8201.jpg"></a>
+<a href="DSC_8210.jpg"><img src="DSC_8210.jpg"></a>
+<a href="DSC_8225.jpg"><img src="DSC_8225.jpg"></a>
+
 </div>
-</section>
 
-<footer>
-<p><a href="../../index.html">Volver al inicio</a></p>
-</footer>
 
-<!-- lightGallery JS -->
-<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.0/lightgallery.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.0/plugins/thumbnail/lg-thumbnail.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.0/plugins/zoom/lg-zoom.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.0/plugins/autoplay/lg-autoplay.umd.min.js"></script>
+<div class="back">
+
+<a href="../../index.html">← Volver</a>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
 
 <script>
-lightGallery(document.getElementById('lightgallery'), {
-    selector: 'a',
-    download: false,
-    thumbnail: true,
-    animateThumb: true,
-    showThumbByDefault: true,
-    controls: true,      // flechas izquierda/derecha
-    mode: 'lg-slide',    // efecto horizontal
-    loop: true           // pasar de la última a la primera
+
+lightGallery(document.getElementById('lightgallery'),{
+download:false
 });
+
 </script>
 
 </body>
+
 </html>
