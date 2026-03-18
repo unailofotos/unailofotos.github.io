@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kostkas - RSO | UNAILOFOTOS</title>
+<title>KOSTKAS - RSO | UNAILOFOTOS</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600&family=Lobster&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
 
 <style>
     :root {
-        --bg-color: #0a0a0a;
+        --bg-color: #050505;
+        --accent-blue: #007bff;
         --text-color: #ffffff;
-        --accent-color: #e63946;
-        --secondary-text: #a0a0a0;
+        --secondary-text: #888888;
     }
 
     body {
-        font-family: 'Cabin', Arial, sans-serif;
+        font-family: 'Inter', sans-serif;
         margin: 0;
         background: var(--bg-color);
         color: var(--text-color);
@@ -25,21 +25,23 @@
 
     header {
         text-align: center;
-        padding: 60px 20px 40px;
+        padding: 80px 20px 50px;
+        background: radial-gradient(circle at top, #1a1a3a 0%, var(--bg-color) 70%);
     }
 
     header h1 {
-        font-family: 'Lobster', cursive;
-        font-size: 3rem;
+        font-family: 'Mulish', sans-serif;
+        font-size: clamp(30px, 6vw, 50px);
         margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 8px;
         color: var(--text-color);
     }
 
-    /* GALERÍA MASONRY (Igual que la Home para coherencia) */
     .gallery {
-        column-gap: 15px;
-        padding: 20px;
-        max-width: 1200px;
+        column-gap: 20px;
+        padding: 0 30px;
+        max-width: 1400px;
         margin: auto;
     }
 
@@ -49,55 +51,62 @@
 
     .gallery a {
         display: block;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         overflow: hidden;
-        border-radius: 8px;
-        background: #1a1a1a;
+        border-radius: 12px;
+        background: #111;
+        border: 1px solid #222;
+        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .gallery img {
         width: 100%;
         display: block;
-        transition: transform 0.4s ease, filter 0.4s ease;
-        filter: brightness(0.85);
+        transition: 0.5s;
+        filter: brightness(0.8) grayscale(20%);
     }
 
-    .gallery img:hover {
-        transform: scale(1.05);
-        filter: brightness(1.1);
+    .gallery a:hover {
+        transform: translateY(-8px);
+        border-color: var(--accent-blue);
+        box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
     }
 
-    /* BOTÓN VOLVER */
+    .gallery a:hover img {
+        filter: brightness(1.1) grayscale(0%);
+        transform: scale(1.03);
+    }
+
     .back-container {
         text-align: center;
-        margin: 50px 0 80px;
+        margin: 80px 0 100px;
     }
 
     .back-link {
         text-decoration: none;
         color: var(--text-color);
         font-weight: 600;
-        padding: 12px 25px;
+        font-size: 0.8rem;
+        letter-spacing: 3px;
+        padding: 15px 35px;
         border: 1px solid #333;
-        border-radius: 30px;
+        border-radius: 50px;
         transition: 0.3s;
         display: inline-block;
-        letter-spacing: 1px;
+        text-transform: uppercase;
     }
 
     .back-link:hover {
-        background: var(--text-color);
-        color: var(--bg-color);
-        border-color: var(--text-color);
+        background: var(--accent-blue);
+        border-color: var(--accent-blue);
+        box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
     }
-
 </style>
 </head>
-
 <body>
 
 <header>
-    <h1>Kostkas - RSO</h1>
+    <h1>KOSTKAS - RSO</h1>
 </header>
 
 <div id="lightgallery" class="gallery">
@@ -131,6 +140,5 @@
         mode: 'lg-fade'
     });
 </script>
-
 </body>
 </html>
