@@ -4,29 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RSO - OVIEDO | UNAILOFOTOS</title>
-<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;900&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
 <style>
-    :root { --rso-blue: #0067b1; --dark: #050505; }
-    body { background: var(--dark); color: white; font-family: 'Inter'; margin: 0; }
-    .header-album { padding: 120px 20px; text-align: center; background: repeating-linear-gradient(45deg, #004d85, #004d85 10px, var(--rso-blue) 10px, var(--rso-blue) 20px); border-bottom: 8px solid white; }
-    .header-album h1 { font-family: 'Mulish'; font-size: clamp(2rem, 8vw, 4rem); text-transform: uppercase; margin: 0; background: white; color: var(--rso-blue); display: inline-block; padding: 10px 40px; transform: skewX(-15deg); box-shadow: 15px 15px 0px rgba(0,0,0,0.3); }
-    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; padding: 40px; max-width: 1400px; margin: auto; }
-    .gallery a { overflow: hidden; border: 1px solid #222; aspect-ratio: 3/4; background: #111; transition: 0.4s; }
-    .gallery a img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); transition: 0.6s; }
-    .gallery a:hover { transform: scale(0.98); border-color: var(--rso-blue); }
-    .gallery a:hover img { filter: brightness(1.1); transform: scale(1.05); }
-    .btn-back { display: block; width: fit-content; margin: 60px auto 100px; padding: 18px 50px; background: white; color: var(--rso-blue); text-decoration: none; font-weight: 900; text-transform: uppercase; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); transition: 0.3s; }
-    .btn-back:hover { background: var(--rso-blue); color: white; }
+    /* Estilos base compartidos */
+    body { background: #020205; color: white; font-family: 'Montserrat'; margin: 0; overflow-x: hidden; }
+    .title-banner { height: 60vh; display: flex; align-items: flex-end; padding: 60px; background: linear-gradient(to bottom, transparent, #002d72); position: relative; border-bottom: 2px solid #00d4ff; }
+    .title-banner h1 { font-family: 'Bebas Neue'; font-size: clamp(60px, 12vw, 150px); margin: 0; line-height: 0.9; letter-spacing: -2px; z-index: 5; text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .title-banner span { color: #00d4ff; display: block; font-size: 0.3em; letter-spacing: 10px; margin-bottom: 10px; }
+    .gallery-cascada { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 10px; padding: 10px; }
+    .gallery-cascada a { overflow: hidden; height: 550px; position: relative; border: 1px solid #111; }
+    .gallery-cascada img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s cubic-bezier(0.2, 1, 0.3, 1); filter: brightness(0.7); }
+    .gallery-cascada a:hover img { transform: scale(1.1); filter: brightness(1.1); }
+    .gallery-cascada a::after { content: "ZOOM +"; position: absolute; inset: 0; background: rgba(0, 45, 114, 0.4); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue'; font-size: 2.5rem; opacity: 0; transition: 0.4s; z-index: 10; letter-spacing: 5px; }
+    .gallery-cascada a:hover::after { opacity: 1; }
+    .footer-nav { text-align: center; padding: 100px 20px; background: linear-gradient(to top, #002d72, transparent); }
+    .btn-exit { display: inline-block; padding: 20px 60px; background: transparent; border: 2px solid #ffffff; color: #ffffff; text-decoration: none; font-family: 'Bebas Neue'; font-size: 1.5rem; letter-spacing: 5px; transition: 0.4s; }
+    .btn-exit:hover { background: #ffffff; color: #002d72; transform: translateY(-5px); }
 </style>
 </head>
 <body>
 
-<div class="header-album">
-    <h1>RSO - OVIEDO</h1>
+<div class="title-banner">
+    <div>
+        <span>CATEGORY / MATCH DAY</span>
+        <h1>RSO - OVIEDO</h1>
+    </div>
 </div>
 
-<div id="lightgallery" class="gallery">
+<div id="lightgallery" class="gallery-cascada">
     <a href="ULF_8353.jpg"><img src="ULF_8353.jpg"></a>
     <a href="ULF_8361.jpg"><img src="ULF_8361.jpg"></a>
     <a href="ULF_8362.jpg"><img src="ULF_8362.jpg"></a>
@@ -49,11 +55,13 @@
     <a href="ULF_8344.jpg"><img src="ULF_8344.jpg"></a>
 </div>
 
-<a href="../../index.html" class="btn-back">← VOLVER AL INICIO</a>
+<div class="footer-nav">
+    <a href="../../index.html" class="btn-exit">VOLVER AL HOME</a>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
 <script>
-    lightGallery(document.getElementById('lightgallery'), { download: false });
+    lightGallery(document.getElementById('lightgallery'), { download: false, speed: 600, mode: 'lg-fade' });
 </script>
 </body>
 </html>
