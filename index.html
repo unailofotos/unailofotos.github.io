@@ -3,53 +3,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UNAILOFOTOS | Fotografía deportiva</title>
+<title>UNAILOFOTOS | Fotografía Deportiva</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600&family=Lobster&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Lobster&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
 
 <style>
     :root {
-        --bg-color: #0a0a0a;
-        --text-color: #ffffff;
-        --accent-color: #e63946;
-        --secondary-text: #a0a0a0;
+        --bg-color: #050505;
+        --accent-blue: #007bff; /* Azul Real Sociedad moderno */
+        --pure-white: #ffffff;
+        --soft-gray: #888888;
+        --card-bg: #111111;
     }
+
+    * { box-sizing: border-box; }
 
     body {
-        font-family: 'Cabin', Arial, sans-serif;
+        font-family: 'Inter', sans-serif;
         margin: 0;
-        background: var(--bg-color);
-        color: var(--text-color);
+        background-color: var(--bg-color);
+        color: var(--pure-white);
         line-height: 1.6;
+        overflow-x: hidden;
     }
 
+    /* Animación de entrada */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* HEADER ESTILIZADO */
     header {
         text-align: center;
-        padding: 80px 20px 60px 20px;
-        background: linear-gradient(to bottom, #1a1a1a, var(--bg-color));
+        padding: 100px 20px 80px;
+        background: radial-gradient(circle at top, #1a1a3a 0%, var(--bg-color) 80%);
     }
 
     header h1 {
         font-family: 'Lobster', cursive;
-        font-size: clamp(50px, 8vw, 80px);
-        margin-bottom: 10px;
+        font-size: clamp(55px, 10vw, 90px);
+        margin: 0;
         letter-spacing: 2px;
-        text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+        background: linear-gradient(to bottom, #fff, #aaa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: fadeIn 0.8s ease-out;
     }
 
     header p {
-        font-size: 1.2rem;
-        color: var(--secondary-text);
+        font-size: 1.1rem;
+        color: var(--soft-gray);
         max-width: 600px;
-        margin: 0 auto;
-        font-style: italic;
+        margin: 15px auto 0;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-weight: 300;
+        animation: fadeIn 1.2s ease-out;
     }
 
+    /* GALERÍA MASONRY MEJORADA */
     .gallery {
-        column-gap: 15px;
-        padding: 20px;
-        max-width: 1400px;
+        column-gap: 20px;
+        padding: 0 40px;
+        max-width: 1500px;
         margin: auto;
     }
 
@@ -59,99 +77,134 @@
 
     .gallery a {
         display: block;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         overflow: hidden;
-        border-radius: 8px;
-        background: #1a1a1a;
+        border-radius: 15px;
+        background: var(--card-bg);
+        transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        animation: fadeIn 1s ease-out both;
+        border: 1px solid #222;
     }
 
     .gallery img {
         width: 100%;
         display: block;
-        transition: transform 0.5s ease, filter 0.5s ease;
-        filter: brightness(0.9);
+        transition: transform 0.6s, filter 0.6s;
+        filter: grayscale(40%) brightness(0.8);
     }
 
-    .gallery img:hover {
-        transform: scale(1.08);
-        filter: brightness(1.1);
+    .gallery a:hover {
+        transform: scale(1.02) translateY(-10px);
+        border-color: var(--accent-blue);
+        box-shadow: 0 15px 40px rgba(0, 123, 255, 0.2);
+        z-index: 10;
     }
 
+    .gallery a:hover img {
+        filter: grayscale(0%) brightness(1.1);
+        transform: scale(1.05);
+    }
+
+    /* SECCIÓN ÁLBUMES TIPO "GRID PRO" */
     .section-title {
         text-align: center;
-        font-size: 2.5rem;
-        font-weight: 600;
-        margin: 60px 0 30px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin: 100px 0 40px;
         text-transform: uppercase;
-        letter-spacing: 3px;
+        letter-spacing: 6px;
+        color: var(--accent-blue);
     }
 
     .albums {
-        display: flex;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 30px;
-        padding: 40px 20px;
-        flex-wrap: wrap;
+        padding: 0 40px 100px;
+        max-width: 1200px;
+        margin: auto;
     }
 
     .album {
+        position: relative;
         text-decoration: none;
-        color: var(--text-color);
-        background: #161616;
-        padding: 15px;
-        border-radius: 12px;
-        transition: 0.3s;
+        color: white;
+        border-radius: 20px;
+        overflow: hidden;
+        aspect-ratio: 1 / 1;
+        transition: 0.4s;
         border: 1px solid #222;
-        max-width: 250px;
-    }
-
-    .album:hover {
-        background: #222;
-        border-color: var(--accent-color);
-        transform: translateY(-10px);
     }
 
     .album img {
         width: 100%;
-        height: 250px;
+        height: 100%;
         object-fit: cover;
-        border-radius: 8px;
+        transition: 0.8s;
+    }
+
+    .album-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 25px;
+        transition: 0.4s;
     }
 
     .album p {
-        font-size: 1.3rem;
-        font-weight: 600;
-        margin: 15px 0 5px;
-        text-align: center;
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin: 0;
+        text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
     }
 
+    .album:hover {
+        border-color: var(--pure-white);
+        transform: scale(0.98);
+    }
+
+    .album:hover img {
+        transform: scale(1.1);
+        filter: blur(2px);
+    }
+
+    .album:hover .album-overlay {
+        background: rgba(0, 123, 255, 0.4);
+    }
+
+    /* FOOTER */
     footer {
         text-align: center;
-        padding: 60px 20px;
-        background: #050505;
-        border-top: 1px solid #1a1a1a;
-        margin-top: 50px;
+        padding: 80px 20px;
+        background: #000;
+        border-top: 1px solid #111;
     }
 
     footer p {
-        color: var(--secondary-text);
-        margin-bottom: 20px;
+        color: var(--soft-gray);
+        font-size: 0.9rem;
+        margin-bottom: 30px;
     }
 
-    footer a {
-        color: var(--text-color);
+    .social-links a {
+        color: var(--pure-white);
         text-decoration: none;
         margin: 0 15px;
-        font-weight: 600;
-        font-size: 0.9rem;
+        font-weight: 700;
+        font-size: 0.8rem;
+        letter-spacing: 2px;
         transition: 0.3s;
-        opacity: 0.7;
+        opacity: 0.5;
     }
 
-    footer a:hover {
-        color: var(--accent-color);
+    .social-links a:hover {
         opacity: 1;
+        color: var(--accent-blue);
     }
+
 </style>
 </head>
 
@@ -159,7 +212,7 @@
 
 <header>
     <h1>UNAILOFOTOS</h1>
-    <p>Capturando la emoción del fútbol, congelando historias en cada disparo.</p>
+    <p>Visual Storyteller — Fotografía Deportiva</p>
 </header>
 
 <section id="intro">
@@ -182,24 +235,23 @@
     </div>
 </section>
 
-<section>
-    <h2 class="section-title">Álbumes</h2>
-    <div class="albums">
-        <a class="album" href="albums/kostkas-rso/index.html">
-            <img src="albums/kostkas-rso/DSC_8116.JPG">
-            <p>Kostkas - RSO</p>
-        </a>
+<h2 class="section-title">Explorar Álbumes</h2>
 
-        <a class="album" href="albums/rso-fcb/index.html">
-            <img src="albums/rso-fcb/DSC_6268.jpg">
-            <p>RSO - FCB</p>
-        </a>
+<section class="albums">
+    <a class="album" href="albums/kostkas-rso/index.html">
+        <img src="albums/kostkas-rso/DSC_8116.JPG">
+        <div class="album-overlay"><p>Kostkas - RSO</p></div>
+    </a>
 
-        <a class="album" href="albums/rso-oviedo/index.html">
-            <img src="albums/rso-oviedo/oviedo.jpg">
-            <p>RSO - OVIEDO</p>
-        </a>
-    </div>
+    <a class="album" href="albums/rso-fcb/index.html">
+        <img src="albums/rso-fcb/DSC_6268.jpg">
+        <div class="album-overlay"><p>RSO - FCB</p></div>
+    </a>
+
+    <a class="album" href="albums/rso-oviedo/index.html">
+        <img src="albums/rso-oviedo/oviedo.jpg">
+        <div class="album-overlay"><p>RSO - OVIEDO</p></div>
+    </a>
 </section>
 
 <footer>
@@ -216,7 +268,8 @@
     lightGallery(document.getElementById('lightgallery'), {
         download: false,
         speed: 500,
-        mode: 'lg-fade'
+        mode: 'lg-fade',
+        mousewheel: true
     });
 </script>
 
