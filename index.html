@@ -3,228 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UNAILOFOTOS | Professional Sports Photography</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+<title>UNAILOFOTOS | Fotógrafo Deportivo</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;800&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
-
 <style>
-    :root {
-        --bg: #050505;
-        --rso-blue: #0067b1; /* Azul Real Sociedad oficial */
-        --rso-white: #ffffff;
-        --accent: #00a8ff;
-    }
+    :root { --blue: #002d72; --neon: #00d4ff; --white: #ffffff; --dark: #020205; }
+    body { background: var(--dark); color: var(--white); font-family: 'Montserrat', sans-serif; margin: 0; overflow-x: hidden; }
 
-    body {
-        font-family: 'Inter', sans-serif;
-        background-color: var(--bg);
-        color: white;
-        margin: 0;
-        overflow-x: hidden;
-    }
+    /* Fondo dinámico */
+    .hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .hero-title { z-index: 10; text-align: center; }
+    .hero-title h1 { font-family: 'Bebas Neue', cursive; font-size: clamp(80px, 20vw, 220px); line-height: 0.8; margin: 0; letter-spacing: -5px; color: transparent; -webkit-text-stroke: 2px var(--white); transition: 0.5s; }
+    .hero-title h1:hover { color: var(--white); -webkit-text-stroke: 2px var(--blue); }
 
-    /* Fondo con Formas Geométricas */
-    .bg-geometry {
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        z-index: -1;
-        opacity: 0.1;
-        background: 
-            linear-gradient(135deg, var(--rso-blue) 25%, transparent 25%) -50px 0,
-            linear-gradient(225deg, var(--rso-blue) 25%, transparent 25%) -50px 0,
-            linear-gradient(315deg, var(--rso-blue) 25%, transparent 25%),
-            linear-gradient(45deg, var(--rso-blue) 25%, transparent 25%);
-        background-size: 100px 100px;
-    }
-
-    header {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        position: relative;
-    }
-
-    /* Título con corte geométrico */
-    header h1 {
-        font-family: 'Mulish', sans-serif;
-        font-size: clamp(40px, 15vw, 120px);
-        line-height: 0.8;
-        margin: 0;
-        text-transform: uppercase;
-        background: linear-gradient(90deg, #fff 50%, var(--rso-blue) 50%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
-    }
-
-    header p {
-        letter-spacing: 10px;
-        text-transform: uppercase;
-        color: var(--rso-blue);
-        font-weight: 700;
-        margin-top: 20px;
-    }
-
-    /* Galería Estilo "Portfolio Moderno" */
-    .gallery-container { padding: 50px 20px; }
+    /* Galería Flotante */
+    .floating-gallery { padding: 100px 50px; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; position: relative; }
+    .floating-gallery a { position: relative; display: block; transition: 0.6s cubic-bezier(0.2, 1, 0.3, 1); }
+    .floating-gallery img { width: 300px; height: 400px; object-fit: cover; border-radius: 2px; filter: saturate(0.5) brightness(0.8); transition: 0.5s; }
     
-    .gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 15px;
-        max-width: 1400px;
-        margin: auto;
-    }
+    /* Efecto Inovador: Rotación aleatoria */
+    .floating-gallery a:nth-child(even) { transform: rotate(3deg) translateY(20px); }
+    .floating-gallery a:nth-child(odd) { transform: rotate(-3deg) translateY(-20px); }
+    
+    .floating-gallery a:hover { transform: rotate(0deg) scale(1.1) z-index: 20; }
+    .floating-gallery a:hover img { filter: saturate(1) brightness(1); box-shadow: 0 30px 60px rgba(0,212,255,0.3); }
 
-    .gallery a {
-        position: relative;
-        overflow: hidden;
-        border-radius: 4px;
-        aspect-ratio: 4/5;
-        clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%); /* Corte geométrico inferior */
-        transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    }
+    /* Sección Álbumes tipo "Ticket" */
+    .album-section { padding: 100px 20px; text-align: center; }
+    .album-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: auto; }
+    .ticket-album { position: relative; background: var(--blue); padding: 10px; text-decoration: none; color: white; border-radius: 10px; overflow: hidden; transition: 0.4s; clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%); }
+    .ticket-album:hover { transform: translateY(-15px); background: var(--neon); }
+    .ticket-album img { width: 100%; height: 250px; object-fit: cover; opacity: 0.8; }
+    .ticket-info { padding: 25px; font-family: 'Bebas Neue'; font-size: 2rem; letter-spacing: 2px; }
 
-    .gallery img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: grayscale(1) brightness(0.6);
-        transition: 0.8s;
-    }
-
-    .gallery a:hover {
-        transform: scale(0.95);
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
-    }
-
-    .gallery a:hover img {
-        filter: grayscale(0) brightness(1.1);
-        transform: scale(1.1);
-    }
-
-    /* Seccion Álbumes - Cards Diagonales */
-    .section-title {
-        font-family: 'Mulish';
-        text-align: center;
-        font-size: 3rem;
-        margin: 100px 0 50px;
-        color: var(--rso-white);
-    }
-
-    .albums {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        padding-bottom: 100px;
-    }
-
-    .album {
-        width: 350px;
-        height: 450px;
-        position: relative;
-        text-decoration: none;
-        color: white;
-        transition: 0.5s;
-    }
-
-    .album::before {
-        content: "";
-        position: absolute;
-        top: -10px; left: -10px; width: 100%; height: 100%;
-        border: 2px solid var(--rso-blue);
-        z-index: -1;
-        transition: 0.4s;
-    }
-
-    .album img {
-        width: 100%; height: 100%;
-        object-fit: cover;
-        border: 1px solid #333;
-    }
-
-    .album-info {
-        position: absolute;
-        bottom: 20px; left: 20px;
-        background: var(--rso-blue);
-        padding: 10px 20px;
-        transform: skewX(-10deg);
-    }
-
-    .album:hover::before {
-        top: 10px; left: 10px;
-        border-color: white;
-    }
-
-    footer {
-        padding: 50px;
-        background: #000;
-        text-align: center;
-        border-top: 5px solid var(--rso-blue);
-    }
+    footer { padding: 80px 20px; background: #000; text-align: center; border-top: 1px solid #1a1a1a; }
+    .socials a { color: var(--white); text-decoration: none; margin: 0 15px; font-size: 0.8rem; letter-spacing: 4px; font-weight: 800; transition: 0.3s; }
+    .socials a:hover { color: var(--neon); }
 </style>
 </head>
 <body>
 
-<div class="bg-geometry"></div>
-
-<header>
-    <h1>UNAILOFOTOS</h1>
-    <p>Captured Emotion</p>
-</header>
-
-<div class="gallery-container">
-    <div id="lightgallery" class="gallery">
-        <a href="fotos_main/DSC_0951.JPG"><img src="fotos_main/DSC_0951.JPG"></a>
-        <a href="fotos_main/DSC_2506.jpg"><img src="fotos_main/DSC_2506.jpg"></a>
-        <a href="fotos_main/DSC_4099.jpg"><img src="fotos_main/DSC_4099.jpg"></a>
-        <a href="fotos_main/DSC_4139.jpg"><img src="fotos_main/DSC_4139.jpg"></a>
-        <a href="fotos_main/DSC_4267.jpg"><img src="fotos_main/DSC_4267.jpg"></a>
-        <a href="fotos_main/DSC_4299.jpg"><img src="fotos_main/DSC_4299.jpg"></a>
-        <a href="fotos_main/DSC_4335.jpg"><img src="fotos_main/DSC_4335.jpg"></a>
-        <a href="fotos_main/DSC_4842.jpg"><img src="fotos_main/DSC_4842.jpg"></a>
-        <a href="fotos_main/DSC_4848.jpg"><img src="fotos_main/DSC_4848.jpg"></a>
-        <a href="fotos_main/DSC_5253.jpg"><img src="fotos_main/DSC_5253.jpg"></a>
-        <a href="fotos_main/DSC_5297.jpg"><img src="fotos_main/DSC_5297.jpg"></a>
-        <a href="fotos_main/DSC_5304.jpg"><img src="fotos_main/DSC_5304.jpg"></a>
-        <a href="fotos_main/DSC_5341.jpg"><img src="fotos_main/DSC_5341.jpg"></a>
-        <a href="fotos_main/foto1.JPG"><img src="fotos_main/foto1.JPG"></a>
-        <a href="fotos_main/retouch_2025100515044373.jpg"><img src="fotos_main/retouch_2025100515044373.jpg"></a>
+<section class="hero">
+    <div class="hero-title">
+        <h1>UNAILO</h1>
+        <h1 style="margin-left: 40px;">FOTOS</h1>
     </div>
+</section>
+
+<div id="lightgallery" class="floating-gallery">
+    <a href="fotos_main/DSC_0951.JPG"><img src="fotos_main/DSC_0951.JPG"></a>
+    <a href="fotos_main/DSC_2506.jpg"><img src="fotos_main/DSC_2506.jpg"></a>
+    <a href="fotos_main/DSC_4099.jpg"><img src="fotos_main/DSC_4099.jpg"></a>
+    <a href="fotos_main/DSC_4139.jpg"><img src="fotos_main/DSC_4139.jpg"></a>
+    <a href="fotos_main/DSC_4267.jpg"><img src="fotos_main/DSC_4267.jpg"></a>
+    <a href="fotos_main/DSC_4299.jpg"><img src="fotos_main/DSC_4299.jpg"></a>
+    <a href="fotos_main/DSC_4335.jpg"><img src="fotos_main/DSC_4335.jpg"></a>
+    <a href="fotos_main/DSC_4842.jpg"><img src="fotos_main/DSC_4842.jpg"></a>
+    <a href="fotos_main/DSC_4848.jpg"><img src="fotos_main/DSC_4848.jpg"></a>
+    <a href="fotos_main/DSC_5253.jpg"><img src="fotos_main/DSC_5253.jpg"></a>
+    <a href="fotos_main/DSC_5297.jpg"><img src="fotos_main/DSC_5297.jpg"></a>
+    <a href="fotos_main/DSC_5304.jpg"><img src="fotos_main/DSC_5304.jpg"></a>
+    <a href="fotos_main/DSC_5341.jpg"><img src="fotos_main/DSC_5341.jpg"></a>
+    <a href="fotos_main/foto1.JPG"><img src="fotos_main/foto1.JPG"></a>
+    <a href="fotos_main/retouch_2025100515044373.jpg"><img src="fotos_main/retouch_2025100515044373.jpg"></a>
 </div>
 
-<h2 class="section-title">GALLERY ALBUMS</h2>
-<section class="albums">
-    <a class="album" href="albums/kostkas-rso/index.html">
-        <img src="albums/kostkas-rso/DSC_8116.JPG">
-        <div class="album-info"><p>KOSTKAS - RSO</p></div>
-    </a>
-    <a class="album" href="albums/rso-fcb/index.html">
-        <img src="albums/rso-fcb/DSC_6268.jpg">
-        <div class="album-info"><p>RSO - FCB</p></div>
-    </a>
-    <a class="album" href="albums/rso-oviedo/index.html">
-        <img src="albums/rso-oviedo/oviedo.jpg">
-        <div class="album-info"><p>RSO - OVIEDO</p></div>
-    </a>
+<section class="album-section">
+    <div class="album-grid">
+        <a class="ticket-album" href="albums/kostkas-rso/index.html">
+            <img src="albums/kostkas-rso/DSC_8116.JPG">
+            <div class="ticket-info">KOSTKAS - RSO</div>
+        </a>
+        <a class="ticket-album" href="albums/rso-fcb/index.html">
+            <img src="albums/rso-fcb/DSC_6268.jpg">
+            <div class="ticket-info">RSO - FCB</div>
+        </a>
+        <a class="ticket-album" href="albums/rso-oviedo/index.html">
+            <img src="albums/rso-oviedo/ULF_8342.jpg">
+            <div class="ticket-info">RSO - OVIEDO</div>
+        </a>
+    </div>
 </section>
 
 <footer>
-    <div style="margin-bottom: 20px;">
-        <a href="https://www.instagram.com/unailofotos/" style="color:white; margin:0 10px; text-decoration:none;">INSTAGRAM</a>
-        <a href="https://flic.kr/ps/47n1k3" style="color:white; margin:0 10px; text-decoration:none;">FLICKR</a>
+    <div class="socials">
+        <a href="https://www.instagram.com/unailofotos/" target="_blank">INSTAGRAM</a>
+        <a href="https://www.tiktok.com/@unailoo" target="_blank">TIKTOK</a>
+        <a href="https://flic.kr/ps/47n1k3" target="_blank">FLICKR</a>
     </div>
-    <p>© 2026 UNAILOFOTOS</p>
+    <p style="margin-top: 40px; color: #444; font-size: 0.7rem;">© 2026 UNAILOFOTOS | DONOSTIA</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
 <script>
-    lightGallery(document.getElementById('lightgallery'), { download: false, speed: 500, mode: 'lg-zoom' });
+    lightGallery(document.getElementById('lightgallery'), { download: false, speed: 500 });
 </script>
 </body>
 </html>
