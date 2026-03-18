@@ -1,6 +1,30 @@
-<header>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSO - OVIEDO | UNAILOFOTOS</title>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
+<style>
+    :root { --rso-blue: #0067b1; --dark: #050505; }
+    body { background: var(--dark); color: white; font-family: 'Inter'; margin: 0; }
+    .header-album { padding: 120px 20px; text-align: center; background: repeating-linear-gradient(45deg, #004d85, #004d85 10px, var(--rso-blue) 10px, var(--rso-blue) 20px); border-bottom: 8px solid white; }
+    .header-album h1 { font-family: 'Mulish'; font-size: clamp(2rem, 8vw, 4rem); text-transform: uppercase; margin: 0; background: white; color: var(--rso-blue); display: inline-block; padding: 10px 40px; transform: skewX(-15deg); box-shadow: 15px 15px 0px rgba(0,0,0,0.3); }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; padding: 40px; max-width: 1400px; margin: auto; }
+    .gallery a { overflow: hidden; border: 1px solid #222; aspect-ratio: 3/4; background: #111; transition: 0.4s; }
+    .gallery a img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); transition: 0.6s; }
+    .gallery a:hover { transform: scale(0.98); border-color: var(--rso-blue); }
+    .gallery a:hover img { filter: brightness(1.1); transform: scale(1.05); }
+    .btn-back { display: block; width: fit-content; margin: 60px auto 100px; padding: 18px 50px; background: white; color: var(--rso-blue); text-decoration: none; font-weight: 900; text-transform: uppercase; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); transition: 0.3s; }
+    .btn-back:hover { background: var(--rso-blue); color: white; }
+</style>
+</head>
+<body>
+
+<div class="header-album">
     <h1>RSO - OVIEDO</h1>
-</header>
+</div>
 
 <div id="lightgallery" class="gallery">
     <a href="ULF_8353.jpg"><img src="ULF_8353.jpg"></a>
@@ -24,3 +48,12 @@
     <a href="ULF_8342.jpg"><img src="ULF_8342.jpg"></a>
     <a href="ULF_8344.jpg"><img src="ULF_8344.jpg"></a>
 </div>
+
+<a href="../../index.html" class="btn-back">← VOLVER AL INICIO</a>
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
+<script>
+    lightGallery(document.getElementById('lightgallery'), { download: false });
+</script>
+</body>
+</html>
