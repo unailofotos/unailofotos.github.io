@@ -3,45 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UNAILOFOTOS | Fotógrafo Deportivo</title>
+<title>UNAILOFOTOS | Fotografia Deportiva </title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;800&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
 <style>
-    :root { --blue: #002d72; --neon: #00d4ff; --white: #ffffff; --dark: #020205; }
-    body { background: var(--dark); color: var(--white); font-family: 'Montserrat', sans-serif; margin: 0; overflow-x: hidden; }
+    :root { 
+        --rso-blue: #002d72; /* Azul profundo Real Sociedad */
+        --neon-blue: #00d4ff; 
+        --pure-white: #ffffff; 
+        --text-dark: #020205; 
+    }
+    body { 
+        /* Fondo mezcla de blanco y azul (degradado diagonal) */
+        background: linear-gradient(135deg, var(--pure-white) 0%, var(--pure-white) 50%, var(--rso-blue) 50%, var(--rso-blue) 100%);
+        background-attachment: fixed; /* Mantiene el fondo quieto al hacer scroll */
+        color: var(--text-dark); /* Texto oscuro para contraste */
+        font-family: 'Montserrat', sans-serif; 
+        margin: 0; 
+        overflow-x: hidden; 
+    }
 
-    /* Fondo dinámico */
+    /* Fondo dinámico geométrico (estrellas/cruces) sobre el degradado */
+    .bg-geometry {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: -1;
+        opacity: 0.03; /* Muy sutil */
+        background: 
+            linear-gradient(135deg, var(--rso-blue) 25%, transparent 25%) -50px 0,
+            linear-gradient(225deg, var(--rso-blue) 25%, transparent 25%) -50px 0,
+            linear-gradient(315deg, var(--rso-blue) 25%, transparent 25%),
+            linear-gradient(45deg, var(--rso-blue) 25%, transparent 25%);
+        background-size: 100px 100px;
+    }
+
     .hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
     .hero-title { z-index: 10; text-align: center; }
-    .hero-title h1 { font-family: 'Bebas Neue', cursive; font-size: clamp(80px, 20vw, 220px); line-height: 0.8; margin: 0; letter-spacing: -5px; color: transparent; -webkit-text-stroke: 2px var(--white); transition: 0.5s; }
-    .hero-title h1:hover { color: var(--white); -webkit-text-stroke: 2px var(--blue); }
+    .hero-title h1 { 
+        font-family: 'Bebas Neue', cursive; 
+        font-size: clamp(80px, 20vw, 220px); 
+        line-height: 0.8; 
+        margin: 0; 
+        letter-spacing: -5px; 
+        color: transparent; 
+        /* Borde en azul profundo */
+        -webkit-text-stroke: 2px var(--rso-blue); 
+        transition: 0.5s; 
+    }
+    /* Relleno blanco al hover */
+    .hero-title h1:hover { color: var(--pure-white); -webkit-text-stroke: 2px var(--neon-blue); }
 
     /* Galería Flotante */
     .floating-gallery { padding: 100px 50px; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; position: relative; }
     .floating-gallery a { position: relative; display: block; transition: 0.6s cubic-bezier(0.2, 1, 0.3, 1); }
-    .floating-gallery img { width: 300px; height: 400px; object-fit: cover; border-radius: 2px; filter: saturate(0.5) brightness(0.8); transition: 0.5s; }
+    .floating-gallery img { width: 300px; height: 400px; object-fit: cover; border-radius: 4px; border: 4px solid var(--pure-white); filter: saturate(0.7) brightness(0.9); transition: 0.5s; }
     
-    /* Efecto Inovador: Rotación aleatoria */
+    /* Rotación aleatoria */
     .floating-gallery a:nth-child(even) { transform: rotate(3deg) translateY(20px); }
     .floating-gallery a:nth-child(odd) { transform: rotate(-3deg) translateY(-20px); }
     
     .floating-gallery a:hover { transform: rotate(0deg) scale(1.1) z-index: 20; }
-    .floating-gallery a:hover img { filter: saturate(1) brightness(1); box-shadow: 0 30px 60px rgba(0,212,255,0.3); }
+    .floating-gallery a:hover img { filter: saturate(1) brightness(1.1); box-shadow: 0 30px 60px rgba(0,45,114,0.3); border-color: var(--neon-blue); }
 
-    /* Sección Álbumes tipo "Ticket" */
+    /* Sección Álbumes tipo "Ticket" Txuri-urdin */
     .album-section { padding: 100px 20px; text-align: center; }
     .album-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: auto; }
-    .ticket-album { position: relative; background: var(--blue); padding: 10px; text-decoration: none; color: white; border-radius: 10px; overflow: hidden; transition: 0.4s; clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%); }
-    .ticket-album:hover { transform: translateY(-15px); background: var(--neon); }
-    .ticket-album img { width: 100%; height: 250px; object-fit: cover; opacity: 0.8; }
-    .ticket-info { padding: 25px; font-family: 'Bebas Neue'; font-size: 2rem; letter-spacing: 2px; }
+    .ticket-album { 
+        position: relative; 
+        background: var(--pure-white); /* Fondo ticket blanco */
+        padding: 10px; 
+        text-decoration: none; 
+        color: var(--rso-blue); /* Texto azul */
+        border-radius: 10px; 
+        overflow: hidden; 
+        transition: 0.4s; 
+        border: 2px solid var(--rso-blue);
+        /* Troquelado ticket */
+        clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%); 
+    }
+    .ticket-album:hover { transform: translateY(-15px); background: var(--rso-blue); color: var(--pure-white); box-shadow: 0 15px 30px rgba(0,45,114,0.2); }
+    .ticket-album img { width: 100%; height: 250px; object-fit: cover; border-radius: 4px; transition: 0.4s; }
+    .ticket-album:hover img { opacity: 0.8; }
+    .ticket-info { padding: 25px; font-family: 'Bebas Neue'; font-size: 2.2rem; letter-spacing: 2px; }
 
-    footer { padding: 80px 20px; background: #000; text-align: center; border-top: 1px solid #1a1a1a; }
-    .socials a { color: var(--white); text-decoration: none; margin: 0 15px; font-size: 0.8rem; letter-spacing: 4px; font-weight: 800; transition: 0.3s; }
-    .socials a:hover { color: var(--neon); }
+    footer { padding: 80px 20px; background: var(--rso-blue); text-align: center; border-top: 5px solid var(--pure-white); }
+    .socials a { color: var(--pure-white); text-decoration: none; margin: 0 15px; font-size: 0.8rem; letter-spacing: 4px; font-weight: 800; transition: 0.3s; opacity: 0.7; }
+    .socials a:hover { color: var(--neon-blue); opacity: 1; }
+    footer p { margin-top: 40px; color: rgba(255,255,255,0.5); font-size: 0.75rem; letter-spacing: 2px; }
 </style>
 </head>
 <body>
+
+<div class="bg-geometry"></div>
 
 <section class="hero">
     <div class="hero-title">
@@ -79,7 +132,7 @@
             <div class="ticket-info">RSO - FCB</div>
         </a>
         <a class="ticket-album" href="albums/rso-oviedo/index.html">
-            <img src="albums/rso-oviedo/ULF_8342.jpg">
+            <img src="albums/rso-oviedo/oviedo.jpg">
             <div class="ticket-info">RSO - OVIEDO</div>
         </a>
     </div>
@@ -91,7 +144,7 @@
         <a href="https://www.tiktok.com/@unailoo" target="_blank">TIKTOK</a>
         <a href="https://flic.kr/ps/47n1k3" target="_blank">FLICKR</a>
     </div>
-    <p style="margin-top: 40px; color: #444; font-size: 0.7rem;">© 2026 UNAILOFOTOS | DONOSTIA</p>
+    <p>© 2026 UNAILOFOTOS | DONOSTIA — VISUAL STORYTELLER</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
