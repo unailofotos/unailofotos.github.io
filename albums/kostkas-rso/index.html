@@ -4,110 +4,89 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KOSTKAS - RSO | UNAILOFOTOS</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
-
 <style>
-    :root {
-        --bg-color: #050505;
-        --accent-blue: #007bff;
-        --text-color: #ffffff;
-        --secondary-text: #888888;
-    }
-
-    body {
-        font-family: 'Inter', sans-serif;
-        margin: 0;
-        background: var(--bg-color);
-        color: var(--text-color);
-    }
-
-    header {
+    :root { --rso-blue: #0067b1; --dark: #050505; }
+    body { background: var(--dark); color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+    
+    .header-album {
+        padding: 120px 20px;
         text-align: center;
-        padding: 80px 20px 50px;
-        background: radial-gradient(circle at top, #1a1a3a 0%, var(--bg-color) 70%);
+        background: repeating-linear-gradient(45deg, #004d85, #004d85 10px, var(--rso-blue) 10px, var(--rso-blue) 20px);
+        border-bottom: 8px solid white;
+        position: relative;
     }
 
-    header h1 {
-        font-family: 'Mulish', sans-serif;
-        font-size: clamp(30px, 6vw, 50px);
-        margin: 0;
+    .header-album h1 {
+        font-family: 'Mulish';
+        font-size: clamp(2rem, 8vw, 4rem);
         text-transform: uppercase;
-        letter-spacing: 8px;
-        color: var(--text-color);
+        margin: 0;
+        background: white;
+        color: var(--rso-blue);
+        display: inline-block;
+        padding: 10px 40px;
+        transform: skewX(-15deg);
+        box-shadow: 15px 15px 0px rgba(0,0,0,0.3);
     }
 
     .gallery {
-        column-gap: 20px;
-        padding: 0 30px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 15px;
+        padding: 40px;
         max-width: 1400px;
         margin: auto;
     }
 
-    @media (min-width: 1024px) { .gallery { column-count: 4; } }
-    @media (max-width: 1023px) and (min-width: 768px) { .gallery { column-count: 3; } }
-    @media (max-width: 767px) { .gallery { column-count: 2; } }
-
     .gallery a {
-        display: block;
-        margin-bottom: 20px;
         overflow: hidden;
-        border-radius: 12px;
-        background: #111;
         border: 1px solid #222;
-        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        aspect-ratio: 3/4;
+        background: #111;
+        transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
-    .gallery img {
-        width: 100%;
-        display: block;
-        transition: 0.5s;
-        filter: brightness(0.8) grayscale(20%);
+    .gallery a img {
+        width: 100%; height: 100%; object-fit: cover;
+        transition: 0.6s;
+        filter: brightness(0.8);
     }
 
     .gallery a:hover {
-        transform: translateY(-8px);
-        border-color: var(--accent-blue);
-        box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
+        transform: scale(0.98);
+        border-color: var(--rso-blue);
     }
 
     .gallery a:hover img {
-        filter: brightness(1.1) grayscale(0%);
-        transform: scale(1.03);
+        filter: brightness(1.1);
+        transform: scale(1.05);
     }
 
-    .back-container {
-        text-align: center;
-        margin: 80px 0 100px;
-    }
-
-    .back-link {
+    .btn-back {
+        display: block;
+        width: fit-content;
+        margin: 60px auto 100px;
+        padding: 18px 50px;
+        background: white;
+        color: var(--rso-blue);
         text-decoration: none;
-        color: var(--text-color);
-        font-weight: 600;
-        font-size: 0.8rem;
-        letter-spacing: 3px;
-        padding: 15px 35px;
-        border: 1px solid #333;
-        border-radius: 50px;
-        transition: 0.3s;
-        display: inline-block;
+        font-weight: 900;
         text-transform: uppercase;
+        letter-spacing: 2px;
+        clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+        transition: 0.3s;
     }
 
-    .back-link:hover {
-        background: var(--accent-blue);
-        border-color: var(--accent-blue);
-        box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
-    }
+    .btn-back:hover { background: var(--rso-blue); color: white; transform: scale(1.1); }
 </style>
 </head>
 <body>
 
-<header>
+<div class="header-album">
     <h1>KOSTKAS - RSO</h1>
-</header>
+</div>
 
 <div id="lightgallery" class="gallery">
     <a href="DSC_8105.jpg"><img src="DSC_8105.jpg"></a>
@@ -128,17 +107,11 @@
     <a href="DSC_8225.jpg"><img src="DSC_8225.jpg"></a>
 </div>
 
-<div class="back-container">
-    <a href="../../index.html" class="back-link">← VOLVER AL INICIO</a>
-</div>
+<a href="../../index.html" class="btn-back">← VOLVER AL INICIO</a>
 
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
 <script>
-    lightGallery(document.getElementById('lightgallery'), {
-        download: false,
-        speed: 500,
-        mode: 'lg-fade'
-    });
+    lightGallery(document.getElementById('lightgallery'), { download: false, speed: 500, mode: 'lg-zoom' });
 </script>
 </body>
 </html>
