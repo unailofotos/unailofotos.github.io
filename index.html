@@ -3,225 +3,182 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UNAILOFOTOS | Fotografía Deportiva</title>
+<title>UNAILOFOTOS | Professional Sports Photography</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@800&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
 
 <style>
     :root {
-        --bg-color: #050505;
-        --accent-blue: #007bff;
-        --pure-white: #ffffff;
-        --soft-gray: #888888;
-        --card-bg: #111111;
+        --bg: #050505;
+        --rso-blue: #0067b1; /* Azul Real Sociedad oficial */
+        --rso-white: #ffffff;
+        --accent: #00a8ff;
     }
-
-    * { box-sizing: border-box; }
 
     body {
         font-family: 'Inter', sans-serif;
+        background-color: var(--bg);
+        color: white;
         margin: 0;
-        background-color: var(--bg-color);
-        color: var(--pure-white);
-        line-height: 1.6;
         overflow-x: hidden;
     }
 
-    /* Animación de entrada suave */
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
+    /* Fondo con Formas Geométricas */
+    .bg-geometry {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: -1;
+        opacity: 0.1;
+        background: 
+            linear-gradient(135deg, var(--rso-blue) 25%, transparent 25%) -50px 0,
+            linear-gradient(225deg, var(--rso-blue) 25%, transparent 25%) -50px 0,
+            linear-gradient(315deg, var(--rso-blue) 25%, transparent 25%),
+            linear-gradient(45deg, var(--rso-blue) 25%, transparent 25%);
+        background-size: 100px 100px;
     }
 
-    /* HEADER CON FUENTE MULI */
     header {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         text-align: center;
-        padding: 120px 20px 80px;
-        background: radial-gradient(circle at top, #1a1a3a 0%, var(--bg-color) 85%);
+        position: relative;
     }
 
+    /* Título con corte geométrico */
     header h1 {
         font-family: 'Mulish', sans-serif;
-        font-size: clamp(40px, 12vw, 95px);
+        font-size: clamp(40px, 15vw, 120px);
+        line-height: 0.8;
         margin: 0;
         text-transform: uppercase;
-        letter-spacing: 12px; /* Espaciado pro */
-        font-weight: 800;
-        background: linear-gradient(to bottom, #ffffff, #888888);
+        background: linear-gradient(90deg, #fff 50%, var(--rso-blue) 50%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        animation: fadeIn 0.8s ease-out;
+        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
     }
 
     header p {
-        font-size: 0.9rem;
-        color: var(--soft-gray);
-        max-width: 600px;
-        margin: 20px auto 0;
-        letter-spacing: 5px;
+        letter-spacing: 10px;
         text-transform: uppercase;
-        font-weight: 300;
-        animation: fadeIn 1.2s ease-out;
+        color: var(--rso-blue);
+        font-weight: 700;
+        margin-top: 20px;
     }
 
-    /* GALERÍA MASONRY PORTADA */
+    /* Galería Estilo "Portfolio Moderno" */
+    .gallery-container { padding: 50px 20px; }
+    
     .gallery {
-        column-gap: 20px;
-        padding: 0 40px;
-        max-width: 1600px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 15px;
+        max-width: 1400px;
         margin: auto;
     }
 
-    @media (min-width: 1024px) { .gallery { column-count: 5; } }
-    @media (max-width: 1023px) and (min-width: 768px) { .gallery { column-count: 3; } }
-    @media (max-width: 767px) { .gallery { column-count: 2; } }
-
     .gallery a {
-        display: block;
-        margin-bottom: 20px;
+        position: relative;
         overflow: hidden;
-        border-radius: 15px;
-        background: var(--card-bg);
-        transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-        border: 1px solid #1a1a1a;
-        animation: fadeIn 1s ease-out both;
+        border-radius: 4px;
+        aspect-ratio: 4/5;
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%); /* Corte geométrico inferior */
+        transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     .gallery img {
         width: 100%;
-        display: block;
-        transition: 0.6s;
-        filter: brightness(0.7) grayscale(30%);
-    }
-
-    .gallery a:hover {
-        transform: scale(1.03) translateY(-10px);
-        border-color: var(--accent-blue);
-        box-shadow: 0 20px 40px rgba(0, 123, 255, 0.25);
-        z-index: 10;
-    }
-
-    .gallery a:hover img {
-        filter: brightness(1.1) grayscale(0%);
-    }
-
-    /* SECCIÓN ÁLBUMES */
-    .section-title {
-        text-align: center;
-        font-size: 0.8rem;
-        font-weight: 700;
-        margin: 120px 0 50px;
-        text-transform: uppercase;
-        letter-spacing: 8px;
-        color: var(--accent-blue);
-    }
-
-    .albums {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 35px;
-        padding: 0 40px 120px;
-        max-width: 1300px;
-        margin: auto;
-    }
-
-    .album {
-        position: relative;
-        text-decoration: none;
-        color: white;
-        border-radius: 20px;
-        overflow: hidden;
-        aspect-ratio: 1 / 1;
-        transition: 0.5s;
-        border: 1px solid #222;
-    }
-
-    .album img {
-        width: 100%;
         height: 100%;
         object-fit: cover;
+        filter: grayscale(1) brightness(0.6);
         transition: 0.8s;
     }
 
-    .album-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 30px;
-        transition: 0.4s;
+    .gallery a:hover {
+        transform: scale(0.95);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
     }
 
-    .album p {
-        font-family: 'Mulish', sans-serif;
-        font-size: 1.2rem;
-        font-weight: 700;
-        margin: 0;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
-
-    .album:hover {
-        border-color: var(--pure-white);
-        transform: translateY(-5px);
-    }
-
-    .album:hover img {
+    .gallery a:hover img {
+        filter: grayscale(0) brightness(1.1);
         transform: scale(1.1);
     }
 
-    .album:hover .album-overlay {
-        background: rgba(0, 123, 255, 0.3);
-    }
-
-    /* FOOTER */
-    footer {
+    /* Seccion Álbumes - Cards Diagonales */
+    .section-title {
+        font-family: 'Mulish';
         text-align: center;
-        padding: 100px 20px;
-        background: #000;
-        border-top: 1px solid #111;
+        font-size: 3rem;
+        margin: 100px 0 50px;
+        color: var(--rso-white);
     }
 
-    .social-links {
-        margin-bottom: 30px;
+    .albums {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding-bottom: 100px;
     }
 
-    .social-links a {
-        color: var(--pure-white);
+    .album {
+        width: 350px;
+        height: 450px;
+        position: relative;
         text-decoration: none;
-        margin: 0 20px;
-        font-weight: 700;
-        font-size: 0.75rem;
-        letter-spacing: 3px;
-        transition: 0.3s;
-        opacity: 0.4;
+        color: white;
+        transition: 0.5s;
     }
 
-    .social-links a:hover {
-        opacity: 1;
-        color: var(--accent-blue);
+    .album::before {
+        content: "";
+        position: absolute;
+        top: -10px; left: -10px; width: 100%; height: 100%;
+        border: 2px solid var(--rso-blue);
+        z-index: -1;
+        transition: 0.4s;
     }
 
-    footer p {
-        color: #333;
-        font-size: 0.7rem;
-        letter-spacing: 2px;
+    .album img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        border: 1px solid #333;
     }
 
+    .album-info {
+        position: absolute;
+        bottom: 20px; left: 20px;
+        background: var(--rso-blue);
+        padding: 10px 20px;
+        transform: skewX(-10deg);
+    }
+
+    .album:hover::before {
+        top: 10px; left: 10px;
+        border-color: white;
+    }
+
+    footer {
+        padding: 50px;
+        background: #000;
+        text-align: center;
+        border-top: 5px solid var(--rso-blue);
+    }
 </style>
 </head>
-
 <body>
+
+<div class="bg-geometry"></div>
 
 <header>
     <h1>UNAILOFOTOS</h1>
-    <p>Visual Storyteller — Donostia</p>
+    <p>Captured Emotion</p>
 </header>
 
-<section id="intro">
+<div class="gallery-container">
     <div id="lightgallery" class="gallery">
         <a href="fotos_main/DSC_0951.JPG"><img src="fotos_main/DSC_0951.JPG"></a>
         <a href="fotos_main/DSC_2506.jpg"><img src="fotos_main/DSC_2506.jpg"></a>
@@ -239,45 +196,35 @@
         <a href="fotos_main/foto1.JPG"><img src="fotos_main/foto1.JPG"></a>
         <a href="fotos_main/retouch_2025100515044373.jpg"><img src="fotos_main/retouch_2025100515044373.jpg"></a>
     </div>
-</section>
+</div>
 
-<h2 class="section-title">— TRABAJOS RECIENTES —</h2>
-
+<h2 class="section-title">GALLERY ALBUMS</h2>
 <section class="albums">
     <a class="album" href="albums/kostkas-rso/index.html">
         <img src="albums/kostkas-rso/DSC_8116.JPG">
-        <div class="album-overlay"><p>Kostkas - RSO</p></div>
+        <div class="album-info"><p>KOSTKAS - RSO</p></div>
     </a>
-
     <a class="album" href="albums/rso-fcb/index.html">
         <img src="albums/rso-fcb/DSC_6268.jpg">
-        <div class="album-overlay"><p>RSO - FCB</p></div>
+        <div class="album-info"><p>RSO - FCB</p></div>
     </a>
-
     <a class="album" href="albums/rso-oviedo/index.html">
         <img src="albums/rso-oviedo/oviedo.jpg">
-        <div class="album-overlay"><p>RSO - OVIEDO</p></div>
+        <div class="album-info"><p>RSO - OVIEDO</p></div>
     </a>
 </section>
 
 <footer>
-    <div class="social-links">
-        <a href="https://www.instagram.com/unailofotos/" target="_blank">INSTAGRAM</a>
-        <a href="https://www.tiktok.com/@unailoo" target="_blank">TIKTOK</a>
-        <a href="https://flic.kr/ps/47n1k3" target="_blank">FLICKR</a>
+    <div style="margin-bottom: 20px;">
+        <a href="https://www.instagram.com/unailofotos/" style="color:white; margin:0 10px; text-decoration:none;">INSTAGRAM</a>
+        <a href="https://flic.kr/ps/47n1k3" style="color:white; margin:0 10px; text-decoration:none;">FLICKR</a>
     </div>
-    <p>© 2026 UNAILOFOTOS | TODAS LAS IMÁGENES TIENEN DERECHOS DE AUTOR</p>
+    <p>© 2026 UNAILOFOTOS</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
 <script>
-    lightGallery(document.getElementById('lightgallery'), {
-        download: false,
-        speed: 500,
-        mode: 'lg-fade',
-        mousewheel: true
-    });
+    lightGallery(document.getElementById('lightgallery'), { download: false, speed: 500, mode: 'lg-zoom' });
 </script>
-
 </body>
 </html>
