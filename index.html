@@ -37,40 +37,48 @@
     }
     .hero-title h1:hover { color: var(--pure-white); -webkit-text-stroke: 2px var(--neon-blue); }
 
-    /* Mosaico Estilo Imagen (Grid Dinámico) */
-    .floating-gallery { 
-        padding: 50px 20px; 
-        display: grid;
-        grid-template-columns: repeat(5, 1fr); /* 5 columnas base */
-        grid-auto-flow: dense; /* Rellena huecos automáticamente */
-        gap: 15px;
+    /* MOSAICO MASONRY REAL (Efecto Cascada) */
+    .gallery-container {
         max-width: 1400px;
         margin: auto;
+        padding: 50px 20px;
+    }
+
+    .floating-gallery { 
+        columns: 5 250px; /* 5 columnas, mínimo 250px de ancho */
+        column-gap: 15px; /* Espacio entre columnas */
     }
     
     .floating-gallery a { 
         position: relative; 
         display: block; 
+        margin-bottom: 15px; /* Espacio inferior entre fotos */
         overflow: hidden;
         border-radius: 2px;
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         background: var(--pure-white);
         transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         will-change: transform;
+        break-inside: avoid; /* IMPORTANTE: Evita que la foto se corte entre columnas */
     }
 
-    /* Formato Vertical (Por defecto) */
-    .floating-gallery a { aspect-ratio: 4 / 6; }
+    /* ASIGNACIÓN SIMULADA DE ASPECT-RATIOS MEZCLADOS */
+    /* Verticales pronunciados (Por defecto) */
+    .floating-gallery a { aspect-ratio: 2 / 3; }
 
-    /* Formato Horizontal (Las 2 específicas) */
-    .floating-gallery a.horizontal { 
-        grid-column: span 2; /* Ocupa 2 columnas */
-        aspect-ratio: 16 / 9; /* Proporción horizontal */
-    }
+    /* Verticales estándar */
+    .floating-gallery a:nth-child(3n+1) { aspect-ratio: 4 / 5; }
+
+    /* Cuadrados */
+    .floating-gallery a:nth-child(4n+2) { aspect-ratio: 1 / 1; }
+
+    /* Horizontales suaves (Mezclados) */
+    .floating-gallery a:nth-child(5n+3) { aspect-ratio: 3 / 2; }
+
 
     .floating-gallery img { 
         width: 100%; 
-        height: 100%; 
+        height: 100%; /* Ocupa todo el espacio del aspect-ratio del contenedor */
         object-fit: cover; 
         display: block;
         transition: 0.6s ease;
@@ -120,10 +128,12 @@
     .socials a:hover { color: var(--neon-blue); opacity: 1; }
     footer p { margin-top: 40px; color: rgba(255,255,255,0.5); font-size: 0.75rem; }
 
-    /* Adaptación móvil */
-    @media (max-width: 900px) {
-        .floating-gallery { grid-template-columns: repeat(2, 1fr); }
-        .floating-gallery a.horizontal { grid-column: span 2; }
+    /* Adaptación móvil (Columns lo gestiona casi solo, pero forzamos) */
+    @media (max-width: 800px) {
+        .floating-gallery { columns: 2; }
+    }
+    @media (max-width: 500px) {
+        .floating-gallery { columns: 1; }
     }
 </style>
 </head>
@@ -136,25 +146,26 @@
     </div>
 </section>
 
-<div id="lightgallery" class="floating-gallery">
-    <a href="fotos_main/DSC_0951.JPG"><img src="fotos_main/DSC_0951.JPG" loading="lazy"></a>
-    <a href="fotos_main/DSC_2506.jpg"><img src="fotos_main/DSC_2506.jpg" loading="lazy"></a>
-    <a href="fotos_main/DSC_4099.jpg"><img src="fotos_main/DSC_4099.jpg" loading="lazy"></a>
-    <a href="fotos_main/DSC_4139.jpg"><img src="fotos_main/DSC_4139.jpg" loading="lazy"></a>
-    <a href="fotos_main/DSC_4267.jpg"><img src="fotos_main/DSC_4267.jpg" loading="lazy"></a>
-    <a href="fotos_main/DSC_4299.jpg"><img src="fotos_main/DSC_4299.jpg" loading="lazy"></a>
-    <a href="fotos_main/DSC_4335.jpg"><img src="fotos_main/DSC_4335.jpg" loading="lazy"></a>
-    <a href="fotos_main/DSC_4842.jpg"><img src="fotos_main/DSC_4842.jpg" loading="lazy"></a>
-    <a href="fotos_main/DSC_4848.jpg"><img src="fotos_main/DSC_4848.jpg" loading="lazy"></a>
-    <a href="fotos_main/DSC_5253.jpg"><img src="fotos_main/DSC_5253.jpg" loading="lazy"></a>
-    <a href="fotos_main/DSC_5297.jpg"><img src="fotos_main/DSC_5297.jpg" loading="lazy"></a>
-    <a href="fotos_main/DSC_5304.jpg"><img src="fotos_main/DSC_5304.jpg" loading="lazy"></a>
-    
-    <!-- FOTOS HORIZONTALES (Con clase 'horizontal') -->
-    <a href="fotos_main/DSC_5341.jpg" class="horizontal"><img src="fotos_main/DSC_5341.jpg" loading="lazy"></a>
-    <a href="fotos_main/foto1.JPG" class="horizontal"><img src="fotos_main/foto1.JPG" loading="lazy"></a>
-    
-    <a href="fotos_main/retouch_2025100515044373.jpg"><img src="fotos_main/retouch_2025100515044373.jpg" loading="lazy"></a>
+<div class="gallery-container">
+    <div id="lightgallery" class="floating-gallery">
+        <a href="fotos_main/DSC_0951.JPG"><img src="fotos_main/DSC_0951.JPG" loading="lazy"></a>
+        <a href="fotos_main/DSC_2506.jpg"><img src="fotos_main/DSC_2506.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_4099.jpg"><img src="fotos_main/DSC_4099.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_4139.jpg"><img src="fotos_main/DSC_4139.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_4267.jpg"><img src="fotos_main/DSC_4267.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_4299.jpg"><img src="fotos_main/DSC_4299.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_4335.jpg"><img src="fotos_main/DSC_4335.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_4842.jpg"><img src="fotos_main/DSC_4842.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_4848.jpg"><img src="fotos_main/DSC_4848.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_5253.jpg"><img src="fotos_main/DSC_5253.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_5297.jpg"><img src="fotos_main/DSC_5297.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_5304.jpg"><img src="fotos_main/DSC_5304.jpg" loading="lazy"></a>
+        
+        <a href="fotos_main/DSC_5341.jpg"><img src="fotos_main/DSC_5341.jpg" loading="lazy"></a>
+        <a href="fotos_main/foto1.JPG"><img src="fotos_main/foto1.JPG" loading="lazy"></a>
+        
+        <a href="fotos_main/retouch_2025100515044373.jpg"><img src="fotos_main/retouch_2025100515044373.jpg" loading="lazy"></a>
+    </div>
 </div>
 
 <section class="album-section">
