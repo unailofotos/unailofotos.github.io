@@ -13,7 +13,6 @@
         --neon: #00d4ff; 
     }
 
-    /* MANTENIDO: Fondo original */
     body { 
         background: linear-gradient(135deg, var(--pure-white) 0%, var(--pure-white) 50%, var(--rso-blue) 50%, var(--rso-blue) 100%);
         background-attachment: fixed;
@@ -23,7 +22,6 @@
         overflow-x: hidden;
     }
 
-    /* Banner de título optimizado */
     .title-banner { 
         height: 40vh; 
         display: flex; 
@@ -42,7 +40,7 @@
         letter-spacing: 2px;
     }
 
-    /* Galería optimizada para scroll fluido */
+    /* GALERÍA CONFIGURADA A 4 COLUMNAS (6 FILAS PARA 24 FOTOS) */
     .gallery-container {
         max-width: 1400px;
         margin: auto;
@@ -51,19 +49,19 @@
 
     .gallery-cascada { 
         display: grid; 
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas fijas */
         gap: 20px; 
     }
 
     .gallery-cascada a { 
         position: relative;
         overflow: hidden; 
-        height: 450px; 
+        aspect-ratio: 4 / 6; /* Proporción 4x6 fija para todas */
         background: var(--pure-white);
         border-radius: 4px; 
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        will-change: transform; /* Optimización GPU */
+        will-change: transform;
     }
 
     .gallery-cascada img { 
@@ -74,16 +72,13 @@
         display: block;
     }
 
-    /* Efectos Hover */
     .gallery-cascada a:hover { 
         transform: translateY(-8px); 
         box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         z-index: 10;
     }
     
-    .gallery-cascada a:hover img { 
-        transform: scale(1.05);
-    }
+    .gallery-cascada a:hover img { transform: scale(1.05); }
 
     .gallery-cascada a::after { 
         content: "AMPLIAR"; 
@@ -101,7 +96,6 @@
     }
     .gallery-cascada a:hover::after { opacity: 1; transform: translateY(0); }
 
-    /* Botón Volver */
     .footer-nav { text-align: center; padding: 100px 20px; }
     .btn-exit { 
         display: inline-block; 
@@ -122,9 +116,9 @@
         transform: scale(1.05);
     }
 
-    @media (max-width: 768px) {
-        .title-banner { padding: 30px; height: 30vh; }
-        .gallery-cascada { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+    /* Ajuste para móviles: pasa de 4 a 2 columnas para que no se vean minúsculas */
+    @media (max-width: 900px) {
+        .gallery-cascada { grid-template-columns: repeat(2, 1fr); }
     }
 </style>
 </head>
@@ -138,7 +132,6 @@
     <div id="lightgallery" class="gallery-cascada">
         <a href="DSC_6250.jpg"><img src="DSC_6250.jpg" loading="lazy"></a>
         <a href="DSC_6251.jpg"><img src="DSC_6251.jpg" loading="lazy"></a>
-        <a href="DSC_6252.jpg"><img src="DSC_6252.jpg" loading="lazy"></a>
         <a href="DSC_6253.jpg"><img src="DSC_6253.jpg" loading="lazy"></a>
         <a href="DSC_6254.jpg"><img src="DSC_6254.jpg" loading="lazy"></a>
         <a href="DSC_6261 (1).jpg"><img src="DSC_6261 (1).jpg" loading="lazy"></a>
@@ -156,9 +149,7 @@
         <a href="DSC_6298.jpg"><img src="DSC_6298.jpg" loading="lazy"></a>
         <a href="DSC_6300.jpg"><img src="DSC_6300.jpg" loading="lazy"></a>
         <a href="DSC_6301.jpg"><img src="DSC_6301.jpg" loading="lazy"></a>
-        <a href="DSC_6308.jpg"><img src="DSC_6308.jpg" loading="lazy"></a>
         <a href="DSC_6311.jpg"><img src="DSC_6311.jpg" loading="lazy"></a>
-        <a href="DSC_6313.jpg"><img src="DSC_6313.jpg" loading="lazy"></a>
         <a href="DSC_6320.jpg"><img src="DSC_6320.jpg" loading="lazy"></a>
         <a href="DSC_6350.jpg"><img src="DSC_6350.jpg" loading="lazy"></a>
         <a href="DSC_6358.jpg"><img src="DSC_6358.jpg" loading="lazy"></a>
