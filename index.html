@@ -37,11 +37,12 @@
     }
     .hero-title h1:hover { color: var(--pure-white); -webkit-text-stroke: 2px var(--neon-blue); }
 
-    /* GALERÍA CONFIGURADA: 5 Columnas, 3 Filas (15 fotos) */
+    /* Mosaico Estilo Imagen (Grid Dinámico) */
     .floating-gallery { 
         padding: 50px 20px; 
         display: grid;
-        grid-template-columns: repeat(5, 1fr); /* 5 columnas fijas */
+        grid-template-columns: repeat(5, 1fr); /* 5 columnas base */
+        grid-auto-flow: dense; /* Rellena huecos automáticamente */
         gap: 15px;
         max-width: 1400px;
         margin: auto;
@@ -54,10 +55,17 @@
         border-radius: 2px;
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         background: var(--pure-white);
-        padding: 0; /* Quitamos el padding extra para que se vea como en los álbumes */
-        aspect-ratio: 4 / 6; /* Proporción idéntica a los álbumes */
         transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         will-change: transform;
+    }
+
+    /* Formato Vertical (Por defecto) */
+    .floating-gallery a { aspect-ratio: 4 / 6; }
+
+    /* Formato Horizontal (Las 2 específicas) */
+    .floating-gallery a.horizontal { 
+        grid-column: span 2; /* Ocupa 2 columnas */
+        aspect-ratio: 16 / 9; /* Proporción horizontal */
     }
 
     .floating-gallery img { 
@@ -74,11 +82,9 @@
         box-shadow: 0 15px 30px rgba(0,0,0,0.3);
     }
     
-    .floating-gallery a:hover img { 
-        transform: scale(1.05);
-    }
+    .floating-gallery a:hover img { transform: scale(1.05); }
 
-    /* SECCIÓN ÁLBUMES */
+    /* Seccion Albumes */
     .album-section { padding: 100px 20px; }
     .album-grid { 
         display: grid; 
@@ -99,21 +105,8 @@
         border-left: 8px solid var(--rso-blue);
     }
 
-    .square-album img { 
-        width: 100%; 
-        aspect-ratio: 16/9; 
-        object-fit: cover; 
-    }
-
-    .ticket-info { 
-        padding: 20px; 
-        font-family: 'Bebas Neue'; 
-        font-size: 2rem; 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
+    .square-album img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+    .ticket-info { padding: 20px; font-family: 'Bebas Neue'; font-size: 2rem; display: flex; justify-content: space-between; align-items: center; }
     .ticket-info::after { content: "→"; color: var(--neon-blue); }
 
     .square-album:hover { 
@@ -127,12 +120,10 @@
     .socials a:hover { color: var(--neon-blue); opacity: 1; }
     footer p { margin-top: 40px; color: rgba(255,255,255,0.5); font-size: 0.75rem; }
 
-    /* Ajuste para tablets y móviles */
-    @media (max-width: 1100px) {
-        .floating-gallery { grid-template-columns: repeat(3, 1fr); } /* 3 columnas en tablet */
-    }
-    @media (max-width: 700px) {
-        .floating-gallery { grid-template-columns: repeat(2, 1fr); } /* 2 columnas en móvil */
+    /* Adaptación móvil */
+    @media (max-width: 900px) {
+        .floating-gallery { grid-template-columns: repeat(2, 1fr); }
+        .floating-gallery a.horizontal { grid-column: span 2; }
     }
 </style>
 </head>
@@ -158,8 +149,11 @@
     <a href="fotos_main/DSC_5253.jpg"><img src="fotos_main/DSC_5253.jpg" loading="lazy"></a>
     <a href="fotos_main/DSC_5297.jpg"><img src="fotos_main/DSC_5297.jpg" loading="lazy"></a>
     <a href="fotos_main/DSC_5304.jpg"><img src="fotos_main/DSC_5304.jpg" loading="lazy"></a>
-    <a href="fotos_main/DSC_5341.jpg"><img src="fotos_main/DSC_5341.jpg" loading="lazy"></a>
-    <a href="fotos_main/foto1.JPG"><img src="fotos_main/foto1.JPG" loading="lazy"></a>
+    
+    <!-- FOTOS HORIZONTALES (Con clase 'horizontal') -->
+    <a href="fotos_main/DSC_5341.jpg" class="horizontal"><img src="fotos_main/DSC_5341.jpg" loading="lazy"></a>
+    <a href="fotos_main/foto1.JPG" class="horizontal"><img src="fotos_main/foto1.JPG" loading="lazy"></a>
+    
     <a href="fotos_main/retouch_2025100515044373.jpg"><img src="fotos_main/retouch_2025100515044373.jpg" loading="lazy"></a>
 </div>
 
