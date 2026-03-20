@@ -7,48 +7,167 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;900&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
 <style>
-    :root { --rso-blue: #002d72; --pure-white: #ffffff; --neon: #00d4ff; }
+    :root { 
+        --rso-blue: #002d72; 
+        --pure-white: #ffffff; 
+        --neon: #00d4ff; 
+        --soft-blue: rgba(0, 45, 114, 0.05);
+    }
+
+    /* MANTENIDO: Fondo original para coherencia visual */
     body { 
         background: linear-gradient(135deg, var(--pure-white) 0%, var(--pure-white) 50%, var(--rso-blue) 50%, var(--rso-blue) 100%);
         background-attachment: fixed;
-        margin: 0; font-family: 'Montserrat', sans-serif; color: #000;
+        margin: 0; 
+        font-family: 'Montserrat', sans-serif; 
+        color: #000;
+        overflow-x: hidden;
     }
-    .title-banner { height: 50vh; display: flex; align-items: flex-end; padding: 60px; background: linear-gradient(to bottom, var(--rso-blue), transparent); border-bottom: 5px solid var(--pure-white); position: relative; }
-    .title-banner h1 { font-family: 'Bebas Neue'; font-size: clamp(60px, 12vw, 140px); margin: 0; color: var(--pure-white); text-shadow: 0 10px 30px rgba(0,0,0,0.4); z-index: 5; }
-    .gallery-cascada { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 15px; padding: 20px; }
-    .gallery-cascada a { overflow: hidden; height: 500px; border: 4px solid var(--pure-white); border-radius: 4px; position: relative; transition: 0.4s; }
-    .gallery-cascada img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.4); transition: 1s; }
-    .gallery-cascada a:hover { border-color: var(--neon); transform: translateY(-5px); }
-    .gallery-cascada a:hover img { filter: grayscale(0) brightness(1.1); transform: scale(1.05); }
-    .gallery-cascada a::before { content: "VER FOTO"; position: absolute; inset: 0; background: rgba(0, 45, 114, 0.6); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue'; font-size: 2rem; color: #fff; opacity: 0; transition: 0.3s; z-index: 10; }
-    .gallery-cascada a:hover::before { opacity: 1; }
-    .footer-nav { text-align: center; padding: 80px 20px; }
-    .btn-exit { display: inline-block; padding: 15px 50px; background: var(--pure-white); border: 2px solid var(--rso-blue); color: var(--rso-blue); text-decoration: none; font-family: 'Bebas Neue'; font-size: 1.5rem; letter-spacing: 3px; transition: 0.3s; }
-    .btn-exit:hover { background: var(--rso-blue); color: #fff; }
+
+    /* Título Banner Optimizado */
+    .title-banner { 
+        height: 40vh; 
+        display: flex; 
+        align-items: flex-end; 
+        padding: 40px 60px; 
+        background: linear-gradient(to bottom, rgba(0,45,114,0.8), transparent); 
+        position: relative; 
+    }
+    .title-banner h1 { 
+        font-family: 'Bebas Neue'; 
+        font-size: clamp(50px, 10vw, 120px); 
+        margin: 0; 
+        color: var(--pure-white); 
+        text-shadow: 0 10px 30px rgba(0,0,0,0.3); 
+        z-index: 5;
+        letter-spacing: 2px;
+    }
+
+    /* Galería fluida estilo Masonry/Grid */
+    .gallery-container {
+        max-width: 1400px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .gallery-cascada { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+        gap: 20px; 
+    }
+
+    .gallery-cascada a { 
+        position: relative;
+        overflow: hidden; 
+        height: 450px; 
+        background: var(--pure-white);
+        border-radius: 4px; 
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        will-change: transform; /* Ayuda a la GPU para un scroll fluido */
+    }
+
+    .gallery-cascada img { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        transition: 0.6s ease;
+        display: block;
+    }
+
+    /* Efecto Hover limpio */
+    .gallery-cascada a:hover { 
+        transform: translateY(-8px); 
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        z-index: 10;
+    }
+    
+    .gallery-cascada a:hover img { 
+        transform: scale(1.05);
+    }
+
+    /* Overlay minimalista */
+    .gallery-cascada a::after { 
+        content: "AMPLIAR"; 
+        position: absolute; 
+        bottom: 20px; 
+        left: 20px;
+        background: var(--rso-blue);
+        color: white;
+        padding: 5px 15px;
+        font-family: 'Bebas Neue';
+        font-size: 1.2rem;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: 0.3s;
+    }
+    .gallery-cascada a:hover::after { opacity: 1; transform: translateY(0); }
+
+    /* Botón Volver Estilo Real Sociedad */
+    .footer-nav { text-align: center; padding: 100px 20px; }
+    .btn-exit { 
+        display: inline-block; 
+        padding: 15px 40px; 
+        background: var(--rso-blue); 
+        color: var(--pure-white); 
+        text-decoration: none; 
+        font-family: 'Bebas Neue'; 
+        font-size: 1.6rem; 
+        letter-spacing: 2px; 
+        border: 3px solid var(--pure-white);
+        transition: 0.3s; 
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .btn-exit:hover { 
+        background: var(--pure-white); 
+        color: var(--rso-blue); 
+        transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+        .title-banner { padding: 30px; height: 30vh; }
+        .gallery-cascada { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+    }
 </style>
 </head>
 <body>
-<div class="title-banner"><h1>KOSTKAS - RSO</h1></div>
-<div id="lightgallery" class="gallery-cascada">
-    <a href="DSC_8105.jpg"><img src="DSC_8105.jpg"></a>
-    <a href="DSC_8107.jpg"><img src="DSC_8107.jpg"></a>
-    <a href="DSC_8116.JPG"><img src="DSC_8116.JPG"></a>
-    <a href="DSC_8119.jpg"><img src="DSC_8119.jpg"></a>
-    <a href="DSC_8131.jpg"><img src="DSC_8131.jpg"></a>
-    <a href="DSC_8132.jpg"><img src="DSC_8132.jpg"></a>
-    <a href="DSC_8134.jpg"><img src="DSC_8134.jpg"></a>
-    <a href="DSC_8158.jpg"><img src="DSC_8158.jpg"></a>
-    <a href="DSC_8161.jpg"><img src="DSC_8161.jpg"></a>
-    <a href="DSC_8176.jpg"><img src="DSC_8176.jpg"></a>
-    <a href="DSC_8178.jpg"><img src="DSC_8178.jpg"></a>
-    <a href="DSC_8182.jpg"><img src="DSC_8182.jpg"></a>
-    <a href="DSC_8199.jpg"><img src="DSC_8199.jpg"></a>
-    <a href="DSC_8201.jpg"><img src="DSC_8201.jpg"></a>
-    <a href="DSC_8210.jpg"><img src="DSC_8210.jpg"></a>
-    <a href="DSC_8225.jpg"><img src="DSC_8225.jpg"></a>
+
+<div class="title-banner">
+    <h1>KOSTKAS - RSO</h1>
 </div>
-<div class="footer-nav"><a href="../../index.html" class="btn-exit">VOLVER AL INICIO</a></div>
+
+<div class="gallery-container">
+    <div id="lightgallery" class="gallery-cascada">
+        <a href="DSC_8105.jpg"><img src="DSC_8105.jpg" loading="lazy"></a>
+        <a href="DSC_8107.jpg"><img src="DSC_8107.jpg" loading="lazy"></a>
+        <a href="DSC_8116.JPG"><img src="DSC_8116.JPG" loading="lazy"></a>
+        <a href="DSC_8119.jpg"><img src="DSC_8119.jpg" loading="lazy"></a>
+        <a href="DSC_8131.jpg"><img src="DSC_8131.jpg" loading="lazy"></a>
+        <a href="DSC_8132.jpg"><img src="DSC_8132.jpg" loading="lazy"></a>
+        <a href="DSC_8134.jpg"><img src="DSC_8134.jpg" loading="lazy"></a>
+        <a href="DSC_8158.jpg"><img src="DSC_8158.jpg" loading="lazy"></a>
+        <a href="DSC_8161.jpg"><img src="DSC_8161.jpg" loading="lazy"></a>
+        <a href="DSC_8176.jpg"><img src="DSC_8176.jpg" loading="lazy"></a>
+        <a href="DSC_8178.jpg"><img src="DSC_8178.jpg" loading="lazy"></a>
+        <a href="DSC_8182.jpg"><img src="DSC_8182.jpg" loading="lazy"></a>
+        <a href="DSC_8199.jpg"><img src="DSC_8199.jpg" loading="lazy"></a>
+        <a href="DSC_8201.jpg"><img src="DSC_8201.jpg" loading="lazy"></a>
+        <a href="DSC_8210.jpg"><img src="DSC_8210.jpg" loading="lazy"></a>
+        <a href="DSC_8225.jpg"><img src="DSC_8225.jpg" loading="lazy"></a>
+    </div>
+</div>
+
+<div class="footer-nav">
+    <a href="../../index.html" class="btn-exit">VOLVER AL INICIO</a>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
-<script>lightGallery(document.getElementById('lightgallery'), { download: false });</script>
+<script>
+    lightGallery(document.getElementById('lightgallery'), { 
+        download: false,
+        speed: 400,
+        mode: 'lg-fade'
+    });
+</script>
 </body>
 </html>
