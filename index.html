@@ -4,91 +4,124 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UNAILOFOTOS | Fotografía Deportiva</title>
-<!-- Fuente Muli (Mulish) y Montserrat -->
-<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@800&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;900&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
 <style>
     :root { 
-        --bg-dark: #0a0a0a; 
-        --line-grey: #1a1a1a; 
+        --rso-blue: #002d72; 
         --pure-white: #ffffff; 
-        --accent: #00d4ff; 
+        --neon: #00d4ff; 
     }
 
-    /* Fondo de líneas zigzag optimizado (sin lag) */
     body { 
-        margin: 0; 
-        background-color: var(--bg-dark);
-        background-image: 
-            linear-gradient(135deg, var(--line-grey) 25%, transparent 25%), 
-            linear-gradient(225deg, var(--line-grey) 25%, transparent 25%), 
-            linear-gradient(45deg, var(--line-grey) 25%, transparent 25%), 
-            linear-gradient(315deg, var(--line-grey) 25%, transparent 25%);
-        background-position: 40px 0, 40px 0, 0 0, 0 0;
-        background-size: 80px 80px;
+        background: linear-gradient(135deg, var(--pure-white) 0%, var(--pure-white) 50%, var(--rso-blue) 50%, var(--rso-blue) 100%);
         background-attachment: fixed;
-        color: var(--pure-white);
-        font-family: 'Montserrat', sans-serif;
-        -webkit-font-smoothing: antialiased;
+        margin: 0; 
+        font-family: 'Montserrat', sans-serif; 
+        color: #000;
+        overflow-x: hidden;
     }
 
-    .hero { 
-        height: 70vh; 
+    /* Título Banner igual a los álbumes */
+    .title-banner { 
+        height: 45vh; 
         display: flex; 
         flex-direction: column;
-        align-items: center; 
-        justify-content: center; 
-        text-align: center;
-        padding: 0 20px;
+        justify-content: flex-end; 
+        padding: 40px 60px; 
+        background: linear-gradient(to bottom, rgba(0,45,114,0.8), transparent); 
+        position: relative; 
     }
-
-    .hero h1 { 
-        font-family: 'Mulish', sans-serif; 
-        font-size: clamp(40px, 10vw, 120px); 
+    .title-banner h1 { 
+        font-family: 'Bebas Neue'; 
+        font-size: clamp(50px, 10vw, 120px); 
         margin: 0; 
-        letter-spacing: -2px;
-        text-transform: uppercase;
+        color: var(--pure-white); 
+        text-shadow: 0 10px 30px rgba(0,0,0,0.3); 
+        z-index: 5;
+        letter-spacing: 2px;
+    }
+    .subtitle {
         color: var(--pure-white);
-    }
-
-    .hero p {
-        font-size: clamp(14px, 2vw, 18px);
-        max-width: 700px;
-        margin-top: 20px;
-        line-height: 1.6;
         font-weight: 300;
-        color: #aaaaaa;
+        max-width: 600px;
+        margin-top: 10px;
+        font-size: 1.1rem;
+        z-index: 5;
     }
 
-    /* Galería Main Simplificada */
-    .floating-gallery { 
-        padding: 40px; 
+    .gallery-container {
+        max-width: 1600px;
+        margin: auto;
+        padding: 40px 20px;
+    }
+
+    /* Configuración 5x3 para las 15 fotos */
+    .gallery-main { 
         display: grid; 
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+        grid-template-columns: repeat(5, 1fr); /* 5 columnas fijas en escritorio */
         gap: 15px; 
     }
-    .floating-gallery a { 
-        display: block; 
-        border: 4px solid var(--pure-white); 
-        transition: transform 0.3s ease;
-        overflow: hidden;
-    }
-    .floating-gallery img { 
-        width: 100%; 
-        height: 350px; 
-        object-fit: cover; 
-        display: block; 
-    }
-    .floating-gallery a:hover { transform: scale(1.02); }
 
-    /* Sección Álbumes Cuadrados 1:1 */
-    .album-section { padding: 60px 20px; background: rgba(0,0,0,0.4); }
+    .gallery-main a { 
+        position: relative;
+        overflow: hidden; 
+        height: 400px; /* Altura vertical */
+        background: var(--pure-white);
+        border-radius: 4px; 
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        will-change: transform;
+    }
+
+    .gallery-main img { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        transition: 0.6s ease;
+        display: block;
+    }
+
+    /* Animación idéntica a los álbumes */
+    .gallery-main a:hover { 
+        transform: translateY(-8px); 
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        z-index: 10;
+    }
+    .gallery-main a:hover img { transform: scale(1.05); }
+
+    /* Overlay AMPLIAR */
+    .gallery-main a::after { 
+        content: "AMPLIAR"; 
+        position: absolute; 
+        bottom: 20px; 
+        left: 20px;
+        background: var(--rso-blue);
+        color: white;
+        padding: 5px 15px;
+        font-family: 'Bebas Neue';
+        font-size: 1.2rem;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: 0.3s;
+    }
+    .gallery-main a:hover::after { opacity: 1; transform: translateY(0); }
+
+    /* SECCIÓN ÁLBUMES (Portaditas cuadradas 1:1) */
+    .album-header {
+        font-family: 'Bebas Neue';
+        font-size: 3rem;
+        text-align: center;
+        color: var(--pure-white);
+        margin-top: 80px;
+    }
     .album-grid { 
         display: grid; 
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
         gap: 30px; 
-        max-width: 1100px; 
-        margin: auto; 
+        max-width: 1200px; 
+        margin: 40px auto 100px;
+        padding: 0 20px;
     }
     .square-album { 
         background: var(--pure-white); 
@@ -97,69 +130,75 @@
         aspect-ratio: 1 / 1;
         display: flex;
         flex-direction: column;
-        transition: 0.3s;
+        transition: 0.3s ease;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
     .square-album img { width: 100%; height: 100%; object-fit: cover; }
     .square-album .info { 
-        font-family: 'Mulish', sans-serif; 
-        font-size: 1.2rem; 
-        color: #000; 
-        padding: 15px 0 5px 0; 
+        font-family: 'Bebas Neue'; 
+        font-size: 1.8rem; 
+        color: var(--rso-blue); 
+        padding: 15px 0; 
         text-align: center;
     }
-    .square-album:hover { transform: translateY(-10px); }
+    .square-album:hover { transform: scale(1.03); background: var(--rso-blue); }
+    .square-album:hover .info { color: var(--pure-white); }
 
-    footer { 
-        padding: 60px 20px; 
-        text-align: center; 
-        font-size: 0.9rem;
-        border-top: 1px solid var(--line-grey);
+    footer { text-align: center; padding: 60px; color: var(--pure-white); font-weight: 900; }
+    .socials a { color: var(--pure-white); text-decoration: none; margin: 0 15px; letter-spacing: 2px; opacity: 0.8; }
+    .socials a:hover { color: var(--neon); opacity: 1; }
+
+    /* Responsive */
+    @media (max-width: 1200px) { .gallery-main { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 768px) { 
+        .gallery-main { grid-template-columns: repeat(1, 1fr); } 
+        .title-banner { padding: 30px; height: 35vh; }
     }
-    .socials a { color: var(--pure-white); text-decoration: none; margin: 0 15px; opacity: 0.6; transition: 0.3s; }
-    .socials a:hover { opacity: 1; color: var(--accent); }
 </style>
 </head>
 <body>
 
-<section class="hero">
+<div class="title-banner">
     <h1>UNAILOFOTOS</h1>
-    <p>Capturando la emoción de cada partido, congelando momentos que cuentan historias sin necesidad de palabras</p>
-</section>
-
-<div id="lightgallery" class="floating-gallery">
-    <a href="fotos_main/DSC_0951.JPG"><img src="fotos_main/DSC_0951.JPG"></a>
-    <a href="fotos_main/DSC_2506.jpg"><img src="fotos_main/DSC_2506.jpg"></a>
-    <a href="fotos_main/DSC_4099.jpg"><img src="fotos_main/DSC_4099.jpg"></a>
-    <a href="fotos_main/DSC_4139.jpg"><img src="fotos_main/DSC_4139.jpg"></a>
-    <a href="fotos_main/DSC_4267.jpg"><img src="fotos_main/DSC_4267.jpg"></a>
-    <a href="fotos_main/DSC_4299.jpg"><img src="fotos_main/DSC_4299.jpg"></a>
-    <a href="fotos_main/DSC_4335.jpg"><img src="fotos_main/DSC_4335.jpg"></a>
-    <a href="fotos_main/DSC_4842.jpg"><img src="fotos_main/DSC_4842.jpg"></a>
-    <a href="fotos_main/DSC_4848.jpg"><img src="fotos_main/DSC_4848.jpg"></a>
-    <a href="fotos_main/DSC_5253.jpg"><img src="fotos_main/DSC_5253.jpg"></a>
-    <a href="fotos_main/DSC_5297.jpg"><img src="fotos_main/DSC_5297.jpg"></a>
-    <a href="fotos_main/DSC_5304.jpg"><img src="fotos_main/DSC_5304.jpg"></a>
-    <a href="fotos_main/DSC_5341.jpg"><img src="fotos_main/DSC_5341.jpg"></a>
-    <a href="fotos_main/foto1.JPG"><img src="fotos_main/foto1.JPG"></a>
-    <a href="fotos_main/retouch_2025100515044373.jpg"><img src="fotos_main/retouch_2025100515044373.jpg"></a>
+    <p class="subtitle">Capturando la emoción de cada partido, congelando momentos que cuentan historias sin necesidad de palabras</p>
 </div>
 
-<section class="album-section">
-    <div class="album-grid">
-        <a class="square-album" href="albums/kostkas-rso/index.html">
-            <img src="albums/kostkas-rso/DSC_8116.JPG">
-            <div class="info">KOSTKAS - RSO</div>
-        </a>
-        <a class="square-album" href="albums/rso-fcb/index.html">
-            <img src="albums/rso-fcb/DSC_6268.jpg">
-            <div class="info">RSO - FCB</div>
-        </a>
-        <a class="square-album" href="albums/rso-oviedo/index.html">
-            <img src="albums/rso-oviedo/oviedo.jpg">
-            <div class="info">RSO - OVIEDO</div>
-        </a>
+<div class="gallery-container">
+    <div id="lightgallery" class="gallery-main">
+        <a href="fotos_main/DSC_0951.JPG"><img src="fotos_main/DSC_0951.JPG" loading="lazy"></a>
+        <a href="fotos_main/DSC_2506.jpg"><img src="fotos_main/DSC_2506.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_4099.jpg"><img src="fotos_main/DSC_4099.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_4139.jpg"><img src="fotos_main/DSC_4139.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_4267.jpg"><img src="fotos_main/DSC_4267.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_4299.jpg"><img src="fotos_main/DSC_4299.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_4335.jpg"><img src="fotos_main/DSC_4335.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_4842.jpg"><img src="fotos_main/DSC_4842.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_4848.jpg"><img src="fotos_main/DSC_4848.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_5253.jpg"><img src="fotos_main/DSC_5253.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_5297.jpg"><img src="fotos_main/DSC_5297.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_5304.jpg"><img src="fotos_main/DSC_5304.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_5341.jpg"><img src="fotos_main/DSC_5341.jpg" loading="lazy"></a>
+        <a href="fotos_main/foto1.JPG"><img src="fotos_main/foto1.JPG" loading="lazy"></a>
+        <a href="fotos_main/retouch_2025100515044373.jpg"><img src="fotos_main/retouch_2025100515044373.jpg" loading="lazy"></a>
     </div>
-</section>
+</div>
+
+<h2 class="album-header">ÁLBUMES</h2>
+
+<div class="album-grid">
+    <a class="square-album" href="albums/kostkas-rso/index.html">
+        <img src="albums/kostkas-rso/DSC_8116.JPG">
+        <div class="info">KOSTKAS - RSO</div>
+    </a>
+    <a class="square-album" href="albums/rso-fcb/index.html">
+        <img src="albums/rso-fcb/DSC_6268.jpg">
+        <div class="info">RSO - FCB</div>
+    </a>
+    <a class="square-album" href="albums/rso-oviedo/index.html">
+        <img src="albums/rso-oviedo/oviedo.jpg">
+        <div class="info">RSO - OVIEDO</div>
+    </a>
+</div>
 
 <footer>
     <div class="socials">
@@ -167,12 +206,16 @@
         <a href="https://www.tiktok.com/@unailoo" target="_blank">TIKTOK</a>
         <a href="https://flic.kr/ps/47n1k3" target="_blank">FLICKR</a>
     </div>
-    <p>© 2026 UNAILOFOTOS | DONOSTIA</p>
+    <p style="margin-top: 20px; opacity: 0.5; font-size: 0.8rem;">© 2026 UNAILOFOTOS | DONOSTIA</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
 <script>
-    lightGallery(document.getElementById('lightgallery'), { download: false });
+    lightGallery(document.getElementById('lightgallery'), { 
+        download: false,
+        speed: 400,
+        mode: 'lg-fade'
+    });
 </script>
 </body>
 </html>
