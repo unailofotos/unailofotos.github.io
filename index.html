@@ -4,126 +4,129 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UNAILOFOTOS | Fotografía Deportiva</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;800&display=swap" rel="stylesheet">
+<!-- Fuente Muli (Mulish) y Montserrat -->
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@800&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
 <style>
     :root { 
-        --rso-blue: #002d72; 
+        --bg-dark: #0a0a0a; 
+        --line-grey: #1a1a1a; 
         --pure-white: #ffffff; 
-        --neon: #00d4ff;
+        --accent: #00d4ff; 
     }
 
+    /* Fondo de líneas zigzag optimizado (sin lag) */
     body { 
         margin: 0; 
-        font-family: 'Montserrat', sans-serif; 
-        /* FONDO ZIGZAG MEZCLA AZUL/BLANCO */
-        background-color: var(--pure-white);
+        background-color: var(--bg-dark);
         background-image: 
-            linear-gradient(135deg, var(--rso-blue) 25%, transparent 25%), 
-            linear-gradient(225deg, var(--rso-blue) 25%, transparent 25%), 
-            linear-gradient(45deg, var(--rso-blue) 25%, transparent 25%), 
-            linear-gradient(315deg, var(--rso-blue) 25%, transparent 25%);
-        background-position: 50px 0, 50px 0, 0 0, 0 0;
-        background-size: 100px 100px;
-        background-repeat: repeat;
+            linear-gradient(135deg, var(--line-grey) 25%, transparent 25%), 
+            linear-gradient(225deg, var(--line-grey) 25%, transparent 25%), 
+            linear-gradient(45deg, var(--line-grey) 25%, transparent 25%), 
+            linear-gradient(315deg, var(--line-grey) 25%, transparent 25%);
+        background-position: 40px 0, 40px 0, 0 0, 0 0;
+        background-size: 80px 80px;
         background-attachment: fixed;
-        color: #000;
-    }
-
-    /* Capa de suavizado para que el zigzag no moleste a la vista */
-    body::before {
-        content: "";
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(255, 255, 255, 0.8);
-        z-index: -1;
+        color: var(--pure-white);
+        font-family: 'Montserrat', sans-serif;
+        -webkit-font-smoothing: antialiased;
     }
 
     .hero { 
-        height: 100vh; 
+        height: 70vh; 
         display: flex; 
         flex-direction: column;
         align-items: center; 
         justify-content: center; 
         text-align: center;
+        padding: 0 20px;
     }
 
     .hero h1 { 
-        font-family: 'Bebas Neue'; 
-        font-size: clamp(100px, 25vw, 250px); 
-        line-height: 0.8; 
+        font-family: 'Mulish', sans-serif; 
+        font-size: clamp(40px, 10vw, 120px); 
         margin: 0; 
-        color: var(--rso-blue);
-        text-shadow: 8px 8px 0px var(--neon);
+        letter-spacing: -2px;
         text-transform: uppercase;
+        color: var(--pure-white);
     }
 
-    /* Galería de fotos sueltas */
+    .hero p {
+        font-size: clamp(14px, 2vw, 18px);
+        max-width: 700px;
+        margin-top: 20px;
+        line-height: 1.6;
+        font-weight: 300;
+        color: #aaaaaa;
+    }
+
+    /* Galería Main Simplificada */
     .floating-gallery { 
-        padding: 50px; 
+        padding: 40px; 
         display: grid; 
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-        gap: 20px; 
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+        gap: 15px; 
     }
     .floating-gallery a { 
         display: block; 
-        border: 10px solid var(--pure-white); 
-        box-shadow: 10px 10px 0px var(--rso-blue);
-        transition: 0.3s;
+        border: 4px solid var(--pure-white); 
+        transition: transform 0.3s ease;
+        overflow: hidden;
     }
-    .floating-gallery img { width: 100%; height: 400px; object-fit: cover; display: block; }
-    .floating-gallery a:hover { transform: translate(-5px, -5px); box-shadow: 15px 15px 0px var(--neon); }
+    .floating-gallery img { 
+        width: 100%; 
+        height: 350px; 
+        object-fit: cover; 
+        display: block; 
+    }
+    .floating-gallery a:hover { transform: scale(1.02); }
 
     /* Sección Álbumes Cuadrados 1:1 */
-    .album-section { padding: 100px 20px; }
+    .album-section { padding: 60px 20px; background: rgba(0,0,0,0.4); }
     .album-grid { 
         display: grid; 
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-        gap: 40px; 
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+        gap: 30px; 
         max-width: 1100px; 
         margin: auto; 
     }
     .square-album { 
         background: var(--pure-white); 
-        padding: 15px; 
+        padding: 10px; 
         text-decoration: none; 
-        border: 2px solid var(--rso-blue);
         aspect-ratio: 1 / 1;
         display: flex;
         flex-direction: column;
-        transition: 0.4s;
+        transition: 0.3s;
     }
     .square-album img { width: 100%; height: 100%; object-fit: cover; }
     .square-album .info { 
-        font-family: 'Bebas Neue'; 
-        font-size: 2rem; 
-        color: var(--rso-blue); 
-        padding-top: 15px; 
+        font-family: 'Mulish', sans-serif; 
+        font-size: 1.2rem; 
+        color: #000; 
+        padding: 15px 0 5px 0; 
         text-align: center;
     }
-    .square-album:hover { transform: scale(1.02); background: var(--rso-blue); }
-    .square-album:hover .info { color: var(--pure-white); }
+    .square-album:hover { transform: translateY(-10px); }
 
     footer { 
-        background: var(--rso-blue); 
-        color: white; 
         padding: 60px 20px; 
         text-align: center; 
-        font-family: 'Bebas Neue';
-        letter-spacing: 2px;
+        font-size: 0.9rem;
+        border-top: 1px solid var(--line-grey);
     }
-    .socials a { color: var(--neon); text-decoration: none; margin: 0 20px; }
+    .socials a { color: var(--pure-white); text-decoration: none; margin: 0 15px; opacity: 0.6; transition: 0.3s; }
+    .socials a:hover { opacity: 1; color: var(--accent); }
 </style>
 </head>
 <body>
 
 <section class="hero">
-    <h1>UNAILO</h1>
-    <h1 style="color: white; -webkit-text-stroke: 3px var(--rso-blue); text-shadow: 8px 8px 0px var(--rso-blue);">FOTOS</h1>
+    <h1>UNAILOFOTOS</h1>
+    <p>Capturando la emoción de cada partido, congelando momentos que cuentan historias sin necesidad de palabras</p>
 </section>
 
 <div id="lightgallery" class="floating-gallery">
-    <!-- Aquí van tus fotos del main -->
     <a href="fotos_main/DSC_0951.JPG"><img src="fotos_main/DSC_0951.JPG"></a>
     <a href="fotos_main/DSC_2506.jpg"><img src="fotos_main/DSC_2506.jpg"></a>
     <a href="fotos_main/DSC_4099.jpg"><img src="fotos_main/DSC_4099.jpg"></a>
@@ -160,16 +163,16 @@
 
 <footer>
     <div class="socials">
-        <a href="#">INSTAGRAM</a>
-        <a href="#">TIKTOK</a>
-        <a href="#">FLICKR</a>
+        <a href="https://www.instagram.com/unailofotos/" target="_blank">INSTAGRAM</a>
+        <a href="https://www.tiktok.com/@unailoo" target="_blank">TIKTOK</a>
+        <a href="https://flic.kr/ps/47n1k3" target="_blank">FLICKR</a>
     </div>
     <p>© 2026 UNAILOFOTOS | DONOSTIA</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
 <script>
-    lightGallery(document.getElementById('lightgallery'), { download: false, speed: 500 });
+    lightGallery(document.getElementById('lightgallery'), { download: false });
 </script>
 </body>
 </html>
