@@ -10,43 +10,83 @@
 <style>
     :root { --rso-blue: #002d72; }
     body { background: #0a0a0a; color: white; margin: 0; font-family: 'Montserrat', sans-serif; }
+    
     .title-banner { padding: 80px 40px; background: linear-gradient(to right, #005fb8, #002d72); }
     .title-banner h1 { font-family: 'Bebas Neue'; font-size: clamp(40px, 8vw, 100px); margin: 0; }
-    .gallery-container { max-width: 1500px; margin: 40px auto; padding: 0 20px; }
-    .gallery-masonry { columns: 3; column-gap: 15px; }
-    .gallery-masonry a { display: inline-block; width: 100%; margin-bottom: 15px; border-radius: 4px; overflow: hidden; transition: 0.3s; }
-    .gallery-masonry img { width: 100%; display: block; }
+
+    /* Contenedor de Galería 3x6 */
+    .gallery-container { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
+    
+    .gallery-grid { 
+        display: grid; 
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas */
+        gap: 20px; 
+    }
+
+    .gallery-grid a { 
+        display: block; 
+        aspect-ratio: 3 / 4; /* Mantiene todas las fotos con la misma proporción */
+        border-radius: 4px; 
+        overflow: hidden; 
+        transition: transform 0.4s ease;
+        background: #111;
+    }
+
+    .gallery-grid img { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        display: block;
+        transition: 0.5s;
+    }
+
+    .gallery-grid a:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+    .gallery-grid a:hover img { transform: scale(1.05); }
+
+    /* Navegación final */
     .nav-buttons { display: flex; justify-content: center; gap: 20px; padding: 100px 20px; }
     .btn { padding: 15px 30px; font-family: 'Bebas Neue'; font-size: 1.5rem; text-decoration: none; border-radius: 4px; border: 2px solid white; color: white; transition: 0.3s; }
     .btn:hover { background: white; color: black; }
-    @media (max-width: 800px) { .gallery-masonry { columns: 2; } }
+
+    /* Ajuste para tablets y móviles */
+    @media (max-width: 900px) { 
+        .gallery-grid { grid-template-columns: repeat(2, 1fr); } /* 2 columnas en tablets */
+    }
+    @media (max-width: 600px) {
+        .gallery-grid { gap: 10px; } /* Menos espacio en móviles */
+    }
 </style>
 </head>
 <body>
 
 <div class="title-banner">
     <h1 data-aos="fade-left">RSO - OVIEDO</h1>
+    <p style="opacity:0.7" data-aos="fade-left" data-aos-delay="200">18 Capturas · Cuadrícula 3x6</p>
 </div>
 
 <div class="gallery-container">
-    <div id="lightgallery" class="gallery-masonry">
+    <div id="lightgallery" class="gallery-grid">
+        <!-- Fila 1 -->
         <a href="ULF_8353.jpg" data-aos="fade-up"><img src="ULF_8353.jpg" loading="lazy"></a>
         <a href="ULF_8361.jpg" data-aos="fade-up"><img src="ULF_8361.jpg" loading="lazy"></a>
         <a href="ULF_8362.jpg" data-aos="fade-up"><img src="ULF_8362.jpg" loading="lazy"></a>
+        <!-- Fila 2 -->
         <a href="ULF_8363.jpg" data-aos="fade-up"><img src="ULF_8363.jpg" loading="lazy"></a>
         <a href="ULF_8366.jpg" data-aos="fade-up"><img src="ULF_8366.jpg" loading="lazy"></a>
         <a href="ULF_8368.jpg" data-aos="fade-up"><img src="ULF_8368.jpg" loading="lazy"></a>
+        <!-- Fila 3 -->
         <a href="ULF_8369.jpg" data-aos="fade-up"><img src="ULF_8369.jpg" loading="lazy"></a>
         <a href="ULF_8370.jpg" data-aos="fade-up"><img src="ULF_8370.jpg" loading="lazy"></a>
         <a href="ULF_8373.jpg" data-aos="fade-up"><img src="ULF_8373.jpg" loading="lazy"></a>
+        <!-- Fila 4 -->
         <a href="ULF_8374.jpg" data-aos="fade-up"><img src="ULF_8374.jpg" loading="lazy"></a>
         <a href="ULF_8375.jpg" data-aos="fade-up"><img src="ULF_8375.jpg" loading="lazy"></a>
-        <a href="ULF_8410.jpg" data-aos="fade-up"><img src="ULF_8410.jpg" loading="lazy"></a>
         <a href="ULF_8412.jpg" data-aos="fade-up"><img src="ULF_8412.jpg" loading="lazy"></a>
+        <!-- Fila 5 -->
         <a href="ULF_8417.jpg" data-aos="fade-up"><img src="ULF_8417.jpg" loading="lazy"></a>
-        <a href="ULF_8430.jpg" data-aos="fade-up"><img src="ULF_8430.jpg" loading="lazy"></a>
         <a href="ULF_8431.jpg" data-aos="fade-up"><img src="ULF_8431.jpg" loading="lazy"></a>
         <a href="ULF_8434.jpg" data-aos="fade-up"><img src="ULF_8434.jpg" loading="lazy"></a>
+        <!-- Fila 6 -->
         <a href="ULF_8451.jpg" data-aos="fade-up"><img src="ULF_8451.jpg" loading="lazy"></a>
         <a href="ULF_8342.jpg" data-aos="fade-up"><img src="ULF_8342.jpg" loading="lazy"></a>
         <a href="ULF_8344.jpg" data-aos="fade-up"><img src="ULF_8344.jpg" loading="lazy"></a>
@@ -61,7 +101,11 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init({ duration: 800, once: true });
-    lightGallery(document.getElementById('lightgallery'), { download: false });
+    lightGallery(document.getElementById('lightgallery'), { 
+        download: false,
+        counter: true,
+        selector: 'a'
+    });
 </script>
 </body>
 </html>
