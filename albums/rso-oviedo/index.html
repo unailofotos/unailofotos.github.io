@@ -1,131 +1,218 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RSO - OVIEDO | UNAILOFOTOS</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;900&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<style>
-    :root { --rso-blue: #002d72; }
-    body { background: #0a0a0a; color: white; margin: 0; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSO - OVIEDO | UNAILOFOTOS</title>
     
-    /* Header Minimalista */
-    .title-banner { 
-        padding: 100px 40px 60px; 
-        background: linear-gradient(to right, #005fb8, #002d72); 
-        text-align: left;
-    }
-    .title-banner h1 { 
-        font-family: 'Bebas Neue'; 
-        font-size: clamp(50px, 10vw, 120px); 
-        margin: 0; 
-        letter-spacing: 2px; 
-        line-height: 1;
-    }
-
-    /* Galería Organizada */
-    .gallery-container { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
+    <!-- Fuentes Premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
     
-    .gallery-grid { 
-        display: grid; 
-        grid-template-columns: repeat(3, 1fr); 
-        gap: 20px; 
-    }
+    <!-- LightGallery CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    .gallery-grid a { 
-        display: block; 
-        aspect-ratio: 3 / 4; 
-        border-radius: 4px; 
-        overflow: hidden; 
-        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        background: #111;
-    }
+    <style>
+        :root {
+            --rso-blue: #004cba;
+            --dark-bg: #030305;
+            --darker-bg: #000000;
+            --pure-white: #ffffff;
+            --text-muted: #a0a0a0;
+        }
 
-    .gallery-grid img { 
-        width: 100%; 
-        height: 100%; 
-        object-fit: cover; 
-        display: block;
-        transition: 0.6s ease;
-    }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    .gallery-grid a:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); z-index: 10; }
-    .gallery-grid a:hover img { transform: scale(1.05); }
+        body {
+            background: var(--dark-bg);
+            color: var(--pure-white);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    /* Botón de navegación */
-    .nav-buttons { display: flex; justify-content: center; padding: 100px 20px; }
-    .btn { 
-        padding: 18px 45px; 
-        font-family: 'Bebas Neue'; 
-        font-size: 1.6rem; 
-        text-decoration: none; 
-        border: 2px solid white; 
-        color: white; 
-        transition: 0.3s; 
-        letter-spacing: 2px;
-    }
-    .btn:hover { background: white; color: black; transform: scale(1.05); }
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 20px 4vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(3, 3, 5, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
 
-    /* Responsivo */
-    @media (max-width: 900px) { 
-        .gallery-grid { grid-template-columns: repeat(2, 1fr); } 
-        .title-banner { padding: 60px 30px; }
-    }
-    @media (max-width: 600px) {
-        .gallery-grid { grid-template-columns: 1fr; gap: 15px; } 
-    }
-</style>
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--pure-white);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        /* Hero Banner */
+        .title-banner {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(0, 95, 184, 0.2), var(--dark-bg)), url('oviedo.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 0 4vw;
+            margin-bottom: 60px;
+        }
+
+        .title-banner h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            line-height: 0.9;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+
+        .title-banner p {
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Galería Masonry */
+        .gallery-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 4vw;
+        }
+
+        .gallery-masonry {
+            columns: 3;
+            column-gap: 20px;
+        }
+
+        .gallery-masonry a {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--darker-bg);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-masonry img {
+            width: 100%;
+            display: block;
+            transition: filter 0.4s ease;
+        }
+
+        .gallery-masonry a:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Botones de Navegación */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            padding: 100px 4vw;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            text-decoration: none;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .btn-home {
+            border: 1px solid var(--text-muted);
+            color: var(--pure-white);
+        }
+
+        .btn-home:hover {
+            background: var(--pure-white);
+            color: var(--darker-bg);
+            border-color: var(--pure-white);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 900px) {
+            .gallery-masonry { columns: 2; }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-masonry { columns: 1; }
+            .title-banner { height: 50vh; }
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="title-banner">
-    <h1 data-aos="fade-right">RSO - OVIEDO</h1>
-</div>
+    <nav>
+        <a href="../../index.html" class="logo">UNAILOFOTOS</a>
+    </nav>
 
-<div class="gallery-container">
-    <div id="lightgallery" class="gallery-grid">
-        <!-- Fila 1 -->
-        <a href="ULF_8353.jpg" data-aos="fade-up"><img src="ULF_8353.jpg" loading="lazy"></a>
-        <a href="ULF_8361.jpg" data-aos="fade-up"><img src="ULF_8361.jpg" loading="lazy"></a>
-        <a href="ULF_8362.jpg" data-aos="fade-up"><img src="ULF_8362.jpg" loading="lazy"></a>
-        <!-- Fila 2 -->
-        <a href="ULF_8363.jpg" data-aos="fade-up"><img src="ULF_8363.jpg" loading="lazy"></a>
-        <a href="ULF_8366.jpg" data-aos="fade-up"><img src="ULF_8366.jpg" loading="lazy"></a>
-        <a href="ULF_8368.jpg" data-aos="fade-up"><img src="ULF_8368.jpg" loading="lazy"></a>
-        <!-- Fila 3 -->
-        <a href="ULF_8369.jpg" data-aos="fade-up"><img src="ULF_8369.jpg" loading="lazy"></a>
-        <a href="ULF_8370.jpg" data-aos="fade-up"><img src="ULF_8370.jpg" loading="lazy"></a>
-        <a href="ULF_8373.jpg" data-aos="fade-up"><img src="ULF_8373.jpg" loading="lazy"></a>
-        <!-- Fila 4 -->
-        <a href="ULF_8374.jpg" data-aos="fade-up"><img src="ULF_8374.jpg" loading="lazy"></a>
-        <a href="ULF_8375.jpg" data-aos="fade-up"><img src="ULF_8375.jpg" loading="lazy"></a>
-        <a href="ULF_8412.jpg" data-aos="fade-up"><img src="ULF_8412.jpg" loading="lazy"></a>
-        <!-- Fila 5 -->
-        <a href="ULF_8417.jpg" data-aos="fade-up"><img src="ULF_8417.jpg" loading="lazy"></a>
-        <a href="ULF_8431.jpg" data-aos="fade-up"><img src="ULF_8431.jpg" loading="lazy"></a>
-        <a href="ULF_8434.jpg" data-aos="fade-up"><img src="ULF_8434.jpg" loading="lazy"></a>
-        <!-- Fila 6 -->
-        <a href="ULF_8451.jpg" data-aos="fade-up"><img src="ULF_8451.jpg" loading="lazy"></a>
-        <a href="ULF_8342.jpg" data-aos="fade-up"><img src="ULF_8342.jpg" loading="lazy"></a>
-        <a href="ULF_8344.jpg" data-aos="fade-up"><img src="ULF_8344.jpg" loading="lazy"></a>
+    <div class="title-banner">
+        <h1 data-aos="fade-up">RSO - OVIEDO</h1>
+        <p data-aos="fade-up" data-aos-delay="200">Temporada 25/26</p>
     </div>
-</div>
 
-<div class="nav-buttons">
-    <a href="../../index.html" class="btn">VOLVER AL INICIO</a>
-</div>
+    <div class="gallery-container">
+        <div id="lightgallery" class="gallery-masonry">
+            <a href="ULF_8353.jpg" data-aos="fade-up"><img src="ULF_8353.jpg" loading="lazy"></a>
+            <a href="ULF_8361.jpg" data-aos="fade-up"><img src="ULF_8361.jpg" loading="lazy"></a>
+            <a href="ULF_8362.jpg" data-aos="fade-up"><img src="ULF_8362.jpg" loading="lazy"></a>
+            <a href="ULF_8363.jpg" data-aos="fade-up"><img src="ULF_8363.jpg" loading="lazy"></a>
+            <a href="ULF_8366.jpg" data-aos="fade-up"><img src="ULF_8366.jpg" loading="lazy"></a>
+            <a href="ULF_8368.jpg" data-aos="fade-up"><img src="ULF_8368.jpg" loading="lazy"></a>
+            <a href="ULF_8369.jpg" data-aos="fade-up"><img src="ULF_8369.jpg" loading="lazy"></a>
+            <a href="ULF_8370.jpg" data-aos="fade-up"><img src="ULF_8370.jpg" loading="lazy"></a>
+            <a href="ULF_8373.jpg" data-aos="fade-up"><img src="ULF_8373.jpg" loading="lazy"></a>
+            <a href="ULF_8374.jpg" data-aos="fade-up"><img src="ULF_8374.jpg" loading="lazy"></a>
+            <a href="ULF_8375.jpg" data-aos="fade-up"><img src="ULF_8375.jpg" loading="lazy"></a>
+            <a href="ULF_8412.jpg" data-aos="fade-up"><img src="ULF_8412.jpg" loading="lazy"></a>
+            <a href="ULF_8417.jpg" data-aos="fade-up"><img src="ULF_8417.jpg" loading="lazy"></a>
+            <a href="ULF_8431.jpg" data-aos="fade-up"><img src="ULF_8431.jpg" loading="lazy"></a>
+            <a href="ULF_8434.jpg" data-aos="fade-up"><img src="ULF_8434.jpg" loading="lazy"></a>
+            <a href="ULF_8451.jpg" data-aos="fade-up"><img src="ULF_8451.jpg" loading="lazy"></a>
+            <a href="ULF_8342.jpg" data-aos="fade-up"><img src="ULF_8342.jpg" loading="lazy"></a>
+            <a href="ULF_8344.jpg" data-aos="fade-up"><img src="ULF_8344.jpg" loading="lazy"></a>
+        </div>
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init({ duration: 1000, once: true });
-    lightGallery(document.getElementById('lightgallery'), { 
-        download: false,
-        speed: 500,
-        mode: 'lg-fade'
-    });
-</script>
+    <div class="nav-buttons">
+        <a href="../../index.html" class="btn btn-home">VOLVER AL INICIO</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        lightGallery(document.getElementById('lightgallery'), { 
+            speed: 500,
+            download: false,
+            counter: false
+        });
+    </script>
 </body>
+
 </html>
