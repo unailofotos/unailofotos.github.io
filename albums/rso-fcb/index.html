@@ -1,73 +1,233 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RSO - FCB | UNAILOFOTOS</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;900&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<style>
-    :root { --rso-blue: #002d72; }
-    body { background: #0a0a0a; color: white; margin: 0; font-family: 'Montserrat', sans-serif; }
-    .title-banner { padding: 80px 40px; background: linear-gradient(to right, #720000, #002d72); }
-    .title-banner h1 { font-family: 'Bebas Neue'; font-size: clamp(40px, 8vw, 100px); margin: 0; }
-    .gallery-container { max-width: 1500px; margin: 40px auto; padding: 0 20px; }
-    .gallery-masonry { columns: 3; column-gap: 15px; }
-    .gallery-masonry a { display: inline-block; width: 100%; margin-bottom: 15px; border-radius: 4px; overflow: hidden; transition: 0.3s; }
-    .gallery-masonry img { width: 100%; display: block; }
-    .nav-buttons { display: flex; justify-content: center; gap: 20px; padding: 100px 20px; }
-    .btn { padding: 15px 30px; font-family: 'Bebas Neue'; font-size: 1.5rem; text-decoration: none; border-radius: 4px; transition: 0.3s; border: 2px solid white; color: white; }
-    .btn-next { background: var(--rso-blue); border-color: var(--rso-blue); }
-    .btn:hover { background: white; color: black; }
-    @media (max-width: 800px) { .gallery-masonry { columns: 2; } }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSO - FCB | UNAILOFOTOS</title>
+    
+    <!-- Fuentes Premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- LightGallery CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --rso-blue: #004cba;
+            --fcb-red: #a50044;
+            --dark-bg: #030305;
+            --darker-bg: #000000;
+            --pure-white: #ffffff;
+            --text-muted: #a0a0a0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: var(--dark-bg);
+            color: var(--pure-white);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navbar (Coherente con el Main) */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 20px 4vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(3, 3, 5, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--pure-white);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        /* Hero Banner del Álbum */
+        .title-banner {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* Gradiente temático RSO vs FCB */
+            background: linear-gradient(to bottom, rgba(165, 0, 68, 0.15), var(--dark-bg)), url('DSC_6268.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 0 4vw;
+            margin-bottom: 60px;
+        }
+
+        .title-banner h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            line-height: 0.9;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+
+        .title-banner p {
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Galería Masonry */
+        .gallery-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 4vw;
+        }
+
+        .gallery-masonry {
+            columns: 3;
+            column-gap: 20px;
+        }
+
+        .gallery-masonry a {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--darker-bg);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-masonry img {
+            width: 100%;
+            display: block;
+            transition: filter 0.4s ease;
+        }
+
+        .gallery-masonry a:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Botones de Navegación */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            padding: 100px 4vw;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            text-decoration: none;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .btn-home {
+            border: 1px solid var(--text-muted);
+            color: var(--pure-white);
+        }
+
+        .btn-next {
+            background: var(--rso-blue);
+            color: var(--pure-white);
+            border: 1px solid var(--rso-blue);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: var(--pure-white);
+            color: var(--darker-bg);
+            border-color: var(--pure-white);
+        }
+
+        @media (max-width: 900px) {
+            .gallery-masonry { columns: 2; }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-masonry { columns: 1; }
+            .title-banner { height: 50vh; }
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="title-banner">
-    <h1 data-aos="fade-down">RSO - FCB</h1>
-</div>
+    <nav>
+        <a href="../../index.html" class="logo">UNAILOFOTOS</a>
+    </nav>
 
-<div class="gallery-container">
-    <div id="lightgallery" class="gallery-masonry">
-        <a href="DSC_6250.jpg" data-aos="fade-up"><img src="DSC_6250.jpg" loading="lazy"></a>
-        <a href="DSC_6251.jpg" data-aos="fade-up"><img src="DSC_6251.jpg" loading="lazy"></a>
-        <a href="DSC_6253.jpg" data-aos="fade-up"><img src="DSC_6253.jpg" loading="lazy"></a>
-        <a href="DSC_6254.jpg" data-aos="fade-up"><img src="DSC_6254.jpg" loading="lazy"></a>
-        <a href="DSC_6261 (1).jpg" data-aos="fade-up"><img src="DSC_6261 (1).jpg" loading="lazy"></a>
-        <a href="DSC_6263 (1).jpg" data-aos="fade-up"><img src="DSC_6263 (1).jpg" loading="lazy"></a>
-        <a href="DSC_6264.jpg" data-aos="fade-up"><img src="DSC_6264.jpg" loading="lazy"></a>
-        <a href="DSC_6266.jpg" data-aos="fade-up"><img src="DSC_6266.jpg" loading="lazy"></a>
-        <a href="DSC_6268.jpg" data-aos="fade-up"><img src="DSC_6268.jpg" loading="lazy"></a>
-        <a href="DSC_6273.jpg" data-aos="fade-up"><img src="DSC_6273.jpg" loading="lazy"></a>
-        <a href="DSC_6274 (1).jpg" data-aos="fade-up"><img src="DSC_6274 (1).jpg" loading="lazy"></a>
-        <a href="DSC_6275.jpg" data-aos="fade-up"><img src="DSC_6275.jpg" loading="lazy"></a>
-        <a href="DSC_6288.jpg" data-aos="fade-up"><img src="DSC_6288.jpg" loading="lazy"></a>
-        <a href="DSC_6292.jpg" data-aos="fade-up"><img src="DSC_6292.jpg" loading="lazy"></a>
-        <a href="DSC_6293.jpg" data-aos="fade-up"><img src="DSC_6293.jpg" loading="lazy"></a>
-        <a href="DSC_6297.jpg" data-aos="fade-up"><img src="DSC_6297.jpg" loading="lazy"></a>
-        <a href="DSC_6298.jpg" data-aos="fade-up"><img src="DSC_6298.jpg" loading="lazy"></a>
-        <a href="DSC_6300.jpg" data-aos="fade-up"><img src="DSC_6300.jpg" loading="lazy"></a>
-        <a href="DSC_6301.jpg" data-aos="fade-up"><img src="DSC_6301.jpg" loading="lazy"></a>
-        <a href="DSC_6311.jpg" data-aos="fade-up"><img src="DSC_6311.jpg" loading="lazy"></a>
-        <a href="DSC_6320.jpg" data-aos="fade-up"><img src="DSC_6320.jpg" loading="lazy"></a>
-        <a href="DSC_6350.jpg" data-aos="fade-up"><img src="DSC_6350.jpg" loading="lazy"></a>
-        <a href="DSC_6358.jpg" data-aos="fade-up"><img src="DSC_6358.jpg" loading="lazy"></a>
-        <a href="DSC_6245.jpg" data-aos="fade-up"><img src="DSC_6245.jpg" loading="lazy"></a>
+    <div class="title-banner">
+        <h1 data-aos="fade-up">RSO - FCB</h1>
+        <p data-aos="fade-up" data-aos-delay="200">La Liga 25/26</p>
     </div>
-</div>
 
-<div class="nav-buttons">
-    <a href="../../index.html" class="btn">VOLVER</a>
-    <a href="../rso-oviedo/index.html" class="btn btn-next">SIGUIENTE ÁLBUM →</a>
-</div>
+    <div class="gallery-container">
+        <div id="lightgallery" class="gallery-masonry">
+            <a href="DSC_6250.jpg" data-aos="fade-up"><img src="DSC_6250.jpg" loading="lazy"></a>
+            <a href="DSC_6251.jpg" data-aos="fade-up"><img src="DSC_6251.jpg" loading="lazy"></a>
+            <a href="DSC_6253.jpg" data-aos="fade-up"><img src="DSC_6253.jpg" loading="lazy"></a>
+            <a href="DSC_6254.jpg" data-aos="fade-up"><img src="DSC_6254.jpg" loading="lazy"></a>
+            <a href="DSC_6261 (1).jpg" data-aos="fade-up"><img src="DSC_6261 (1).jpg" loading="lazy"></a>
+            <a href="DSC_6263 (1).jpg" data-aos="fade-up"><img src="DSC_6263 (1).jpg" loading="lazy"></a>
+            <a href="DSC_6264.jpg" data-aos="fade-up"><img src="DSC_6264.jpg" loading="lazy"></a>
+            <a href="DSC_6266.jpg" data-aos="fade-up"><img src="DSC_6266.jpg" loading="lazy"></a>
+            <a href="DSC_6268.jpg" data-aos="fade-up"><img src="DSC_6268.jpg" loading="lazy"></a>
+            <a href="DSC_6273.jpg" data-aos="fade-up"><img src="DSC_6273.jpg" loading="lazy"></a>
+            <a href="DSC_6274 (1).jpg" data-aos="fade-up"><img src="DSC_6274 (1).jpg" loading="lazy"></a>
+            <a href="DSC_6275.jpg" data-aos="fade-up"><img src="DSC_6275.jpg" loading="lazy"></a>
+            <a href="DSC_6288.jpg" data-aos="fade-up"><img src="DSC_6288.jpg" loading="lazy"></a>
+            <a href="DSC_6292.jpg" data-aos="fade-up"><img src="DSC_6292.jpg" loading="lazy"></a>
+            <a href="DSC_6293.jpg" data-aos="fade-up"><img src="DSC_6293.jpg" loading="lazy"></a>
+            <a href="DSC_6297.jpg" data-aos="fade-up"><img src="DSC_6297.jpg" loading="lazy"></a>
+            <a href="DSC_6298.jpg" data-aos="fade-up"><img src="DSC_6298.jpg" loading="lazy"></a>
+            <a href="DSC_6300.jpg" data-aos="fade-up"><img src="DSC_6300.jpg" loading="lazy"></a>
+            <a href="DSC_6301.jpg" data-aos="fade-up"><img src="DSC_6301.jpg" loading="lazy"></a>
+            <a href="DSC_6311.jpg" data-aos="fade-up"><img src="DSC_6311.jpg" loading="lazy"></a>
+            <a href="DSC_6320.jpg" data-aos="fade-up"><img src="DSC_6320.jpg" loading="lazy"></a>
+            <a href="DSC_6350.jpg" data-aos="fade-up"><img src="DSC_6350.jpg" loading="lazy"></a>
+            <a href="DSC_6358.jpg" data-aos="fade-up"><img src="DSC_6358.jpg" loading="lazy"></a>
+            <a href="DSC_6245.jpg" data-aos="fade-up"><img src="DSC_6245.jpg" loading="lazy"></a>
+        </div>
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init({ duration: 800, once: true });
-    lightGallery(document.getElementById('lightgallery'), { download: false });
-</script>
+    <div class="nav-buttons">
+        <a href="../../index.html" class="btn btn-home">VOLVER AL INICIO</a>
+        <a href="../rso-oviedo/index.html" class="btn btn-next">SIGUIENTE ÁLBUM →</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        lightGallery(document.getElementById('lightgallery'), { 
+            speed: 500,
+            download: false,
+            counter: false
+        });
+    </script>
 </body>
+
 </html>
