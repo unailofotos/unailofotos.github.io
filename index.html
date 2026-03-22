@@ -4,120 +4,307 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UNAILOFOTOS | Fotografía Deportiva</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
-    :root { --rso-blue: #002d72; --pure-white: #ffffff; --neon: #00d4ff; }
-    body { background: #f8f8f8; margin: 0; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+:root { 
+    --rso-blue: #002d72; 
+    --dark-bg: #0a0a0a;
+    --light-bg: #fcfcfc;
+    --pure-white: #ffffff; 
+    --neon: #00d4ff; 
+    --text-main: #1a1a1a;
+}
 
-    /* Hero Section con Parallax */
-    .title-banner { 
-        height: 70vh; 
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
-        background: linear-gradient(rgba(0,45,114,0.6), rgba(0,45,114,0.6)), url('fotos_main/DSC_5304.jpg'); 
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        text-align: center;
-        position: relative; 
-    }
-    .title-banner h1 { 
-        font-family: 'Bebas Neue'; 
-        font-size: clamp(60px, 15vw, 150px); 
-        color: var(--pure-white); 
-        text-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        letter-spacing: 5px;
-    }
+* { box-sizing: border-box; }
 
-    /* Galería Estilo Masonry (Más pro) */
-    .gallery-container { max-width: 1400px; margin: -50px auto 40px; padding: 0 20px; position: relative; z-index: 10; }
-    .gallery-main { columns: 3; column-gap: 20px; }
-    .gallery-main a { 
-        display: inline-block; width: 100%; margin-bottom: 20px;
-        border-radius: 8px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        transition: 0.4s; background: white;
-    }
-    .gallery-main img { width: 100%; display: block; transition: 0.5s; }
-    .gallery-main a:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-    .gallery-main a:hover img { transform: scale(1.03); }
+html { scroll-behavior: smooth; }
 
-    /* Álbumes */
-    .album-header { font-family: 'Bebas Neue'; font-size: 4rem; text-align: center; color: var(--rso-blue); margin-top: 80px; }
-    .album-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 40px auto 100px; padding: 0 20px; }
-    .square-album { background: white; padding: 10px; text-decoration: none; transition: 0.4s; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 4px; }
-    .square-album img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
-    .square-album .info { font-family: 'Bebas Neue'; font-size: 1.8rem; color: var(--rso-blue); padding: 15px 0; text-align: center; }
-    .square-album:hover { transform: scale(1.05); background: var(--rso-blue); }
-    .square-album:hover .info { color: white; }
+body { 
+    background: var(--light-bg); 
+    margin: 0; 
+    font-family: 'Montserrat', sans-serif; 
+    color: var(--text-main);
+    overflow-x: hidden; 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
-    footer { background: var(--rso-blue); padding: 80px 20px; text-align: center; color: white; }
-    .socials a { color: white; text-decoration: none; margin: 0 15px; font-weight: 900; letter-spacing: 2px; transition: 0.3s; }
-    .socials a:hover { color: var(--neon); }
+/* Hero Section */
+.title-banner { 
+    height: 75vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background: linear-gradient(to bottom, rgba(0, 20, 50, 0.4), rgba(0, 45, 114, 0.8)), url('fotos_main/DSC_5304.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll; /* cambio para evitar lag */
+    text-align: center;
+    position: relative; 
+}
 
-    @media (max-width: 900px) { .gallery-main { columns: 2; } }
-    @media (max-width: 600px) { .gallery-main { columns: 1; } .title-banner { height: 50vh; } }
+.title-banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent, var(--light-bg));
+}
+
+.title-banner h1 { 
+    font-family: 'Bebas Neue', sans-serif; 
+    font-size: clamp(4rem, 12vw, 9rem); 
+    color: var(--pure-white); 
+    letter-spacing: 0.1em;
+    margin: 0;
+    text-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+
+/* Galería Estilo Masonry Minimalista */
+.gallery-container { 
+    max-width: 1600px; 
+    margin: -60px auto 80px; 
+    padding: 0 4vw; 
+    position: relative; 
+}
+
+.gallery-main { 
+    columns: 3; 
+    column-gap: 25px; 
+}
+
+.gallery-main a { 
+    display: block; 
+    margin-bottom: 25px;
+    border-radius: 4px; 
+    overflow: hidden; 
+    background: #eee;
+    break-inside: avoid;
+    transform: translateZ(0);
+}
+
+.gallery-main img { 
+    width: 100%; 
+    display: block; 
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+    will-change: transform;
+}
+
+.gallery-main a:hover img { 
+    transform: scale(1.04); 
+}
+
+/* Sección Álbumes Premium */
+.album-section {
+    max-width: 1400px;
+    margin: 0 auto 120px;
+    padding: 0 4vw;
+}
+
+.album-header { 
+    font-family: 'Bebas Neue', sans-serif; 
+    font-size: clamp(3rem, 6vw, 5rem); 
+    text-align: center; 
+    color: var(--rso-blue); 
+    margin: 0 0 60px 0; 
+    letter-spacing: 0.05em;
+}
+
+.album-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    gap: 40px; 
+}
+
+.square-album { 
+    position: relative;
+    display: block;
+    text-decoration: none; 
+    border-radius: 6px; 
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    background: var(--dark-bg);
+    transform: translateZ(0);
+}
+
+.square-album img { 
+    width: 100%; 
+    height: 100%;
+    object-fit: cover; 
+    transition: transform 0.8s ease, opacity 0.4s ease;
+    opacity: 0.85;
+    will-change: transform;
+}
+
+.square-album::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 45, 114, 0.95) 0%, transparent 60%);
+    z-index: 1;
+    opacity: 0.7;
+    transition: opacity 0.4s ease;
+}
+
+.square-album .info { 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-family: 'Bebas Neue', sans-serif; 
+    font-size: 2.5rem; 
+    color: var(--pure-white); 
+    padding: 40px 30px; 
+    text-align: left; 
+    z-index: 2;
+    letter-spacing: 2px;
+    transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.square-album:hover img { 
+    transform: scale(1.05); 
+    opacity: 0.5;
+}
+
+.square-album:hover::before {
+    opacity: 1;
+}
+
+.square-album:hover .info { 
+    transform: translateY(-10px);
+    color: var(--neon);
+}
+
+/* Footer Elegante */
+footer { 
+    background: var(--dark-bg); 
+    padding: 100px 20px 60px; 
+    text-align: center; 
+    color: var(--pure-white); 
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.socials a { 
+    color: var(--pure-white); 
+    text-decoration: none; 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600; 
+    letter-spacing: 3px; 
+    transition: color 0.3s ease, transform 0.3s ease; 
+    display: inline-block;
+}
+
+.socials a:hover { 
+    color: var(--neon); 
+    transform: translateY(-3px);
+}
+
+.footer-email {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--pure-white); 
+    text-decoration: none; 
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.footer-email:hover {
+    opacity: 1;
+}
+
+.copyright {
+    margin-top: 60px; 
+    opacity: 0.3; 
+    font-size: 0.75rem; 
+    letter-spacing: 2px;
+    font-weight: 300;
+}
+
+/* Responsive */
+@media (max-width: 1024px) { 
+    .gallery-main { columns: 2; } 
+}
+
+@media (max-width: 600px) { 
+    .gallery-main { columns: 1; } 
+    .title-banner { height: 60vh; } 
+    .socials { gap: 20px; flex-wrap: wrap; }
+    .album-grid { gap: 20px; }
+    .square-album .info { font-size: 2rem; padding: 25px 20px; text-align: center; }
+}
 </style>
 </head>
 <body>
 
 <div class="title-banner">
-    <h1 data-aos="zoom-out">UNAILOFOTOS</h1>
+    <h1>UNAILOFOTOS</h1>
 </div>
 
 <div class="gallery-container">
     <div id="lightgallery" class="gallery-main">
-        <!-- Tus fotos con efecto AOS -->
-        <a href="fotos_main/DSC_0951.JPG" data-aos="fade-up"><img src="fotos_main/DSC_0951.JPG" loading="lazy"></a>
-        <a href="fotos_main/DSC_2506.jpg" data-aos="fade-up"><img src="fotos_main/DSC_2506.jpg" loading="lazy"></a>
-        <a href="fotos_main/DSC_4099.jpg" data-aos="fade-up"><img src="fotos_main/DSC_4099.jpg" loading="lazy"></a>
-        <a href="fotos_main/DSC_4139.jpg" data-aos="fade-up"><img src="fotos_main/DSC_4139.jpg" loading="lazy"></a>
-        <a href="fotos_main/DSC_4267.jpg" data-aos="fade-up"><img src="fotos_main/DSC_4267.jpg" loading="lazy"></a>
-        <a href="fotos_main/DSC_4299.jpg" data-aos="fade-up"><img src="fotos_main/DSC_4299.jpg" loading="lazy"></a>
-        <a href="fotos_main/DSC_4335.jpg" data-aos="fade-up"><img src="fotos_main/DSC_4335.jpg" loading="lazy"></a>
-        <a href="fotos_main/DSC_4848.jpg" data-aos="fade-up"><img src="fotos_main/DSC_4848.jpg" loading="lazy"></a>
-        <a href="fotos_main/DSC_5253.jpg" data-aos="fade-up"><img src="fotos_main/DSC_5253.jpg" loading="lazy"></a>
-        <a href="fotos_main/DSC_5297.jpg" data-aos="fade-up"><img src="fotos_main/DSC_5297.jpg" loading="lazy"></a>
-        <a href="fotos_main/DSC_5304.jpg" data-aos="fade-up"><img src="fotos_main/DSC_5304.jpg" loading="lazy"></a>
-        <a href="fotos_main/foto1.JPG" data-aos="fade-up"><img src="fotos_main/foto1.JPG" loading="lazy"></a>
-        <a href="fotos_main/retouch_2025100515044373.jpg" data-aos="fade-up"><img src="fotos_main/retouch_2025100515044373.jpg" loading="lazy"></a>
+        <a href="fotos_main/DSC_0951.JPG"><img src="fotos_main/DSC_0951.JPG" loading="lazy" decoding="async" alt="Fotografía deportiva 1"></a>
+        <a href="fotos_main/DSC_2506.jpg"><img src="fotos_main/DSC_2506.jpg" loading="lazy" decoding="async" alt="Fotografía deportiva 2"></a>
+        <a href="fotos_main/DSC_4099.jpg"><img src="fotos_main/DSC_4099.jpg" loading="lazy" decoding="async" alt="Fotografía deportiva 3"></a>
+        <a href="fotos_main/DSC_4139.jpg"><img src="fotos_main/DSC_4139.jpg" loading="lazy" decoding="async" alt="Fotografía deportiva 4"></a>
+        <a href="fotos_main/DSC_4267.jpg"><img src="fotos_main/DSC_4267.jpg" loading="lazy" decoding="async" alt="Fotografía deportiva 5"></a>
+        <a href="fotos_main/DSC_4299.jpg"><img src="fotos_main/DSC_4299.jpg" loading="lazy" decoding="async" alt="Fotografía deportiva 6"></a>
+        <a href="fotos_main/DSC_4335.jpg"><img src="fotos_main/DSC_4335.jpg" loading="lazy" decoding="async" alt="Fotografía deportiva 7"></a>
+        <a href="fotos_main/DSC_4848.jpg"><img src="fotos_main/DSC_4848.jpg" loading="lazy" decoding="async" alt="Fotografía deportiva 8"></a>
+        <a href="fotos_main/DSC_5253.jpg"><img src="fotos_main/DSC_5253.jpg" loading="lazy" decoding="async" alt="Fotografía deportiva 9"></a>
+        <a href="fotos_main/DSC_5297.jpg"><img src="fotos_main/DSC_5297.jpg" loading="lazy" decoding="async" alt="Fotografía deportiva 10"></a>
+        <a href="fotos_main/DSC_5304.jpg"><img src="fotos_main/DSC_5304.jpg" loading="lazy" decoding="async" alt="Fotografía deportiva 11"></a>
     </div>
 </div>
 
-<h2 class="album-header" data-aos="fade-up">ÁLBUMES</h2>
-
-<div class="album-grid">
-    <a class="square-album" href="albums/kostkas-rso/index.html" data-aos="flip-left">
-        <img src="albums/kostkas-rso/DSC_8116.JPG">
-        <div class="info">KOSTKAS - RSO</div>
-    </a>
-    <a class="square-album" href="albums/rso-fcb/index.html" data-aos="flip-left" data-aos-delay="100">
-        <img src="albums/rso-fcb/DSC_6268.jpg">
-        <div class="info">RSO - FCB</div>
-    </a>
-    <a class="square-album" href="albums/rso-oviedo/index.html" data-aos="flip-left" data-aos-delay="200">
-        <img src="albums/rso-oviedo/oviedo.jpg">
-        <div class="info">RSO - OVIEDO</div>
-    </a>
-</div>
+<section class="album-section">
+    <h2 class="album-header">ÁLBUMES</h2>
+    
+    <div class="album-grid">
+        <a class="square-album" href="albums/kostkas-rso/index.html">
+            <img src="albums/kostkas-rso/DSC_8116.JPG" loading="lazy" decoding="async" alt="Álbum Kostkas - RSO">
+            <div class="info">KOSTKAS - RSO</div>
+        </a>
+        <a class="square-album" href="albums/rso-fcb/index.html">
+            <img src="albums/rso-fcb/DSC_6268.jpg" loading="lazy" decoding="async" alt="Álbum RSO - FCB">
+            <div class="info">RSO - FCB</div>
+        </a>
+        <a class="square-album" href="albums/rso-oviedo/index.html">
+            <img src="albums/rso-oviedo/oviedo.jpg" loading="lazy" decoding="async" alt="Álbum RSO - Oviedo">
+            <div class="info">RSO - OVIEDO</div>
+        </a>
+    </div>
+</section>
 
 <footer>
     <div class="socials">
-        <a href="https://www.instagram.com/unailofotos/" target="_blank">INSTAGRAM</a>
-        <a href="https://www.tiktok.com/@unailoo" target="_blank">TIKTOK</a>
-        <a href="https://flic.kr/ps/47n1k3" target="_blank">FLICKR</a>
+        <a href="https://www.instagram.com/unailofotos/" target="_blank" rel="noopener">INSTAGRAM</a>
+        <a href="https://www.tiktok.com/@unailoo" target="_blank" rel="noopener">TIKTOK</a>
+        <a href="https://flic.kr/ps/47n1k3" target="_blank" rel="noopener">FLICKR</a>
     </div>
-    <a href="mailto:unairealzale@gmail.com" style="display:block; margin-top:20px; color:white; text-decoration:none; opacity:0.7">unairealzale@gmail.com</a>
-    <p style="margin-top: 40px; opacity: 0.4; font-size: 0.8rem;">© 2026 UNAILOFOTOS</p>
+    <a href="mailto:unairealzale@gmail.com" class="footer-email">unairealzale@gmail.com</a>
+    <p class="copyright">© 2026 UNAILOFOTOS</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({ duration: 1000, once: true });
-    lightGallery(document.getElementById('lightgallery'), { download: false, speed: 400 });
+document.addEventListener("DOMContentLoaded", function() {
+    lightGallery(document.getElementById('lightgallery'), { 
+        download: false, 
+        speed: 400,
+        mode: 'lg-fade',
+        cssEasing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+    });
+});
 </script>
 </body>
 </html>
