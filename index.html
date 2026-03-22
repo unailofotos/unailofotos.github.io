@@ -250,7 +250,7 @@
             opacity: 1;
         }
 
-        /* Galería Masonry Minimalista (Sin distracciones) */
+        /* Galería Masonry Minimalista (Volvemos a las columnas) */
         .gallery-container { 
             max-width: 1600px; 
             margin: 0 auto 120px; 
@@ -416,7 +416,7 @@
         <a class="card-album" href="albums/rso-oviedo/index.html" data-aos="fade-up" data-aos-delay="300">
             <img src="albums/rso-oviedo/oviedo.jpg" loading="lazy" alt="">
             <div class="info">
-                <span class="tag">PRIMER EQUIPO - COPA/LIGA</span>
+                <span class="tag">PRIMER EQUIPO - LALIGA</span>
                 <h3>RSO vs OVIEDO</h3>
             </div>
         </a>
@@ -428,65 +428,5 @@
     <h2 class="section-header" data-aos="fade-right">MOMENTOS DESTACADOS</h2>
     <p class="section-subtitle" data-aos="fade-right" data-aos-delay="100">Selección de Acción y Emoción</p>
 
-    <!-- Galería súper limpia con las nuevas fotos incluidas -->
-    <div id="lightgallery" class="gallery-main" data-aos="fade-up" data-aos-duration="1200">
-        <a href="fotos_main/DSC_0951.JPG"><img src="fotos_main/DSC_0951.JPG" loading="lazy" alt=""></a>
-        <a href="fotos_main/DSC_2506.jpg"><img src="fotos_main/DSC_2506.jpg" loading="lazy" alt=""></a>
-        <a href="fotos_main/DSC_4099.jpg"><img src="fotos_main/DSC_4099.jpg" loading="lazy" alt=""></a>
-        <a href="fotos_main/DSC_4139.jpg"><img src="fotos_main/DSC_4139.jpg" loading="lazy" alt=""></a>
-        <a href="fotos_main/DSC_4267.jpg"><img src="fotos_main/DSC_4267.jpg" loading="lazy" alt=""></a>
-        <a href="fotos_main/DSC_4299.jpg"><img src="fotos_main/DSC_4299.jpg" loading="lazy" alt=""></a>
-        <a href="fotos_main/DSC_4335.jpg"><img src="fotos_main/DSC_4335.jpg" loading="lazy" alt=""></a>
-        <a href="fotos_main/DSC_4848.jpg"><img src="fotos_main/DSC_4848.jpg" loading="lazy" alt=""></a>
-        <a href="fotos_main/DSC_5253.jpg"><img src="fotos_main/DSC_5253.jpg" loading="lazy" alt=""></a>
-        <a href="fotos_main/DSC_5297.jpg"><img src="fotos_main/DSC_5297.jpg" loading="lazy" alt=""></a>
-        <a href="fotos_main/DSC_5304.jpg"><img src="fotos_main/DSC_5304.jpg" loading="lazy" alt=""></a>
-        <!-- Nuevas fotos añadidas -->
-        <a href="fotos_main/DSC_4700.jpg"><img src="fotos_main/DSC_4700.jpg" loading="lazy" alt=""></a>
-        <a href="fotos_main/DSC_4842.jpg"><img src="fotos_main/DSC_4842.jpg" loading="lazy" alt=""></a>
-        <a href="fotos_main/DSC_5341.jpg"><img src="fotos_main/DSC_5341.jpg" loading="lazy" alt=""></a>
-        <a href="fotos_main/foto1.JPG"><img src="fotos_main/foto1.JPG" loading="lazy" alt=""></a>
-        <a href="fotos_main/retouch_2025100515044373.jpg"><img src="fotos_main/retouch_2025100515044373.jpg" loading="lazy" alt=""></a>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer>
-    <div class="footer-logo">UNAILOFOTOS</div>
-    
-    <div class="socials">
-        <a href="https://www.instagram.com/unailofotos/" target="_blank" rel="noopener">INSTAGRAM</a>
-        <a href="https://www.tiktok.com/@unailoo" target="_blank" rel="noopener">TIKTOK</a>
-        <a href="https://flic.kr/ps/47n1k3" target="_blank" rel="noopener">FLICKR</a>
-    </div>
-
-    <a href="mailto:unairealzale@gmail.com" class="footer-email">unairealzale@gmail.com</a>
-    
-    <p class="copyright">© 2026 UNAILOFOTOS. Todos los derechos reservados.</p>
-</footer>
-
-<!-- Scripts: LightGallery & AOS Animation -->
-<script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    // Inicializar Animaciones de Scroll
-    AOS.init({
-        once: true,
-        offset: 100 
-    });
-
-    // Inicializar Galería con fondo muy oscuro y sin distracciones
-    document.addEventListener("DOMContentLoaded", function() {
-        lightGallery(document.getElementById('lightgallery'), { 
-            download: false,
-            counter: false,
-            speed: 500,
-            mode: 'lg-fade',
-            cssEasing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-            backdropDuration: 300
-        });
-    });
-</script>
-
-</body>
-</html>
+    <!-- Galería súper limpia con Masonry layout -->
+    <div id="lightgallery" cla
