@@ -170,7 +170,7 @@
         .card-album h3 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(2rem, 4vw, 3rem);
-            color: var(--pure-white) !important; /* Forzamos blanco siempre */
+            color: var(--pure-white) !important;
             margin: 0;
             letter-spacing: 2px;
         }
@@ -186,7 +186,7 @@
 
         .gallery-main { 
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 columnas fijas en PC */
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px; 
         }
 
@@ -195,7 +195,7 @@
             border-radius: 8px; 
             overflow: hidden; 
             background: var(--darker-bg);
-            aspect-ratio: 3 / 4; /* Relación de aspecto vertical */
+            aspect-ratio: 3 / 4;
             position: relative;
         }
 
@@ -276,21 +276,23 @@
     <p class="section-subtitle">La historia completa detrás de cada partido</p>
     
     <div class="album-grid">
-        <!-- Álbum 1 -->
-        <a class="card-album" href="albums/rso-fcb/index.html">
-            <img src="albums/rso-fcb/DSC_6268.jpg" loading="lazy">
-            <div style="position:absolute; bottom:30px; left:30px; z-index:10;">
-                <h3>RSO vs FCB</h3>
-            </div>
-        </a>
-        <!-- Álbum 2 -->
+        <!-- Álbum 1: KOSTKAS vs RSO -->
         <a class="card-album" href="albums/kostkas-rso/index.html">
             <img src="albums/kostkas-rso/DSC_8116.JPG" loading="lazy">
             <div style="position:absolute; bottom:30px; left:30px; z-index:10;">
                 <h3>KOSTKAS vs RSO</h3>
             </div>
         </a>
-        <!-- Álbum 3 -->
+        
+        <!-- Álbum 2: RSO vs FCB -->
+        <a class="card-album" href="albums/rso-fcb/index.html">
+            <img src="albums/rso-fcb/DSC_6268.jpg" loading="lazy">
+            <div style="position:absolute; bottom:30px; left:30px; z-index:10;">
+                <h3>RSO vs FCB</h3>
+            </div>
+        </a>
+
+        <!-- Álbum 3: RSO vs OVIEDO -->
         <a class="card-album" href="albums/rso-oviedo/index.html">
             <img src="albums/rso-oviedo/oviedo.jpg" loading="lazy">
             <div style="position:absolute; bottom:30px; left:30px; z-index:10;">
@@ -304,7 +306,6 @@
     <h2 class="section-header" data-aos="fade-right">MOMENTOS DESTACADOS</h2>
     <p class="section-subtitle">Selección de Acción y Emoción</p>
 
-    <!-- Galería 4x3 con Ratio 3:4 -->
     <div id="lightgallery" class="gallery-main" data-aos="fade-up">
         <a href="fotos_main/DSC_0951.JPG"><img src="fotos_main/DSC_0951.JPG" loading="lazy"></a>
         <a href="fotos_main/DSC_2506.jpg"><img src="fotos_main/DSC_2506.jpg" loading="lazy"></a>
